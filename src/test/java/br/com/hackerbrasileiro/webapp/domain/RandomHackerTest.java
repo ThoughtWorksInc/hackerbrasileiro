@@ -29,13 +29,13 @@ public class RandomHackerTest {
         randomHacker = new RandomHacker(hackers);
 
         List<Hacker> hackers = getHackerList();
-        when(this.hackers.getDailyList()).thenReturn(hackers);
+        when(this.hackers.getHackersDaily()).thenReturn(hackers);
     }
 
     @Test
     public void shouldCallTheCsvRepository() throws IOException {
         randomHacker.getRandomHacker();
-        verify(hackers, times(1)).getDailyList();
+        verify(hackers, times(1)).getHackersDaily();
     }
 
     @Test
@@ -47,7 +47,7 @@ public class RandomHackerTest {
 
     @Test
     public void shouldNotThrowExceptionWithEmptyList() throws IOException {
-        when(hackers.getDailyList()).thenReturn(null);
+        when(hackers.getHackersDaily()).thenReturn(null);
         randomHacker.getRandomHacker();
     }
 

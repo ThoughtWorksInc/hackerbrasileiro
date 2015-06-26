@@ -41,7 +41,7 @@ public class HackersTest {
         given(photos.save("photo")).willReturn("UUID");
         hackers.save(hacker);
 
-        List<Hacker> hackersList = hackers.getDailyList();
+        List<Hacker> hackersList = hackers.getHackersDaily();
         Hacker lastHacker = hackersList.get(hackersList.size()-1);
 
         assertThat(lastHacker.getEmail(), is(hacker.getEmail()));

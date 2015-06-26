@@ -22,7 +22,7 @@ public class RandomHacker {
     }
 
     public Hacker getRandomHacker() throws IOException {
-        List<Hacker> hackers = this.hackers.getDailyList();
+        List<Hacker> hackers = this.hackers.getHackersDaily();
         if (hackers == null || hackers.isEmpty())
             return null;
 

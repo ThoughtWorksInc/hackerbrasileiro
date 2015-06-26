@@ -19,8 +19,8 @@ hackerbrasileiro.iws
 out/
 photos/
 .gradle/
+facemorpher/result.png
 *.csv
-result.png
 
 .DS_Store
 src/main/java/.DS_Store

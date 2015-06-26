@@ -1,11 +1,19 @@
 package br.com.hackerbrasileiro.webapp.domain;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface CsvFile {
 
-    static final String FILE_NAME_OUTPUT = "src/main/resources/files/hackers_%s.cvs";
+    static final String FILE_NAME = "hackers_%s.csv";
     static final String NEW_LINE = "\n";
+    static final String PATH = "src/main/resources/files/";
 
-    void save(Hacker hacker) throws IOException;
+    String formatLine(Hacker hacker, String UUID);
+
+    void addLine(String line) throws IOException;
+
+    String getName();
+
+    List<Hacker> getHackersDaily() throws IOException;
 }
