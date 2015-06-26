@@ -33,5 +33,4 @@ public class PhotosTest {
         byte[] imageByteArray = photos.getImageAsByteArray("src/test/resources/result.png");
         assertTrue(imageByteArray.length > 0);
     }
-
 }
