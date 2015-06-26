@@ -1,17 +1,18 @@
 function showFormPage() {
-  var elementToBeHidden = document.getElementById("tela-inicial");
-  elementToBeHidden.style.display = 'none';
+    reduceHeaderSize();
+    var elementToBeHidden = document.getElementById("tela-inicial");
+    elementToBeHidden.style.display = 'none';
 
-  var elementToBeShown = document.getElementById("formulario-informacoes");
-  elementToBeShown.style.display = 'block';
+    var elementToBeShown = document.getElementById("formulario-informacoes");
+    elementToBeShown.style.display = 'block';
 }
 
 function showCameraPage() {
-  var elementToBeHidden = document.getElementById("formulario-informacoes");
-  elementToBeHidden.style.display = 'none';
+    var elementToBeHidden = document.getElementById("formulario-informacoes");
+    elementToBeHidden.style.display = 'none';
 
-  var elementToBeShown = document.getElementById("camera-show");
-  elementToBeShown.style.display = 'block';
+    var elementToBeShown = document.getElementById("camera-show");
+    elementToBeShown.style.display = 'block';
 }
 
 
@@ -28,4 +29,14 @@ function photoTaken() {
 
     	img.src = event.target.result;
     }
+}
+
+function reduceHeaderSize(){
+    var header = document.getElementById("main-header");
+    header.classList.add('main-header-small-font');
+    header.classList.remove('main-header-normal-font');
+
+    var subHeader = document.getElementById("sub-header");
+    subHeader.classList.add('sub-header-small-font');
+    subHeader.classList.remove('sub-header-normal-font');
 }

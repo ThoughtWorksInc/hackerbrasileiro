@@ -1,11 +1,13 @@
-#tela-inicial {
-  display: block;
-  margin-top: 250px;
+body{
+    font-family: 'Open Sans', serif;
+}
+label {
+	display:block;
+	font-weight:normal;
 }
 
 #formulario-informacoes {
   display:none;
-  margin-top: 250px;
 }
 
 #camera-show {
@@ -18,25 +20,49 @@
 
 #final-screen {
   display: none;
-  margin-top: 250px;
 }
 
 #logo {
   background-image: url("../img/logotw.png");
   height: 100px;
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: 95%;
 }
 
-#header {
-  position: absolute;
-  width: 90%;
-  font-family: 'Open Sans', sans-serif;
-}
 #main-header {
-    font-size: 2.7em;
-    margin-bottom: 0px;
-    line-height: 90%;
+
+    margin-top: 60px;
+}
+
+.main-header-normal-font{
+    font-size: 2.2em;
+}
+
+.main-header-small-font{
+    font-size: 1.7em;
+}
+
+
+#sub-header {
+    font-style: italic;
+    margin-bottom: 40px;
+
+}
+.sub-header-normal-font {
+    font-size: 4.0em;
+}
+
+.sub-header-small-font {
+    font-size: 2.5em;
+}
+
+#legal {
+    font-size: 1.2em;
+}
+
+#checkbox-agreement {
+  font-size: 1.2em;
+  padding-left: 20px;
 }
 
 #low-center {
@@ -44,14 +70,12 @@
   margin: auto;
   margin-top: 575px;
   margin-left: 122px;
-
 }
 
 #low-center-confirm {
   margin: auto;
   margin-top: 575px;
   margin-left: 15px;
-
 }
 
 #video {
@@ -66,12 +90,6 @@
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   background-size: cover;
-}
-
-#sub-header {
-    font-size: 3.5em;
-    font-style: italic;
-    margin-bottom: 30px;
 }
 
 #hacker {
@@ -93,11 +111,6 @@
 
 }
 
-#legal {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.9em;
-}
-
 #legal-button {
     background-color: #FFF;
     border: 1px solid #AAA;
@@ -108,7 +121,6 @@
 }
 
 ul li {
-    padding-left: 15px;
     margin-bottom: 20px;
 }
 
@@ -117,13 +129,7 @@ ul li {
     padding-top: 20px;
 }
 
-#checkbox-agreement {
-  font-size: 1.7em;
-  padding-left: 20px;
-}
-
 .confirm-button {
-  font-family: 'Open Sans', sans-serif;
   background-color: purple;
   color: #FFF;
   border: 1px solid #AAA;
@@ -132,10 +138,10 @@ ul li {
   padding: 5px;
   width: 350px;
   height: 70px;
+  margin-top:20px;
 }
 
 .cancel-button {
-  font-family: 'Open Sans', sans-serif;
   background-color: #999;
   color: #FFF;
   border: 1px solid #AAA;
@@ -149,7 +155,6 @@ ul li {
 }
 
 .ok-button {
-  font-family: 'Open Sans', sans-serif;
   background-color: purple;
   color: #FFF;
   border: 1px solid #AAA;
@@ -170,8 +175,6 @@ input[type=checkbox] {
 
 .text {
   font-size: 2.1em;
-  font-family: 'Open Sans', serif;
-  padding-left: 60px;
   margin-bottom: 0px;
   padding-bottom: 5px;
 }
@@ -183,7 +186,6 @@ input[type=checkbox] {
 .btn-file {
     position: relative;
     display: block;
-    font-family: 'Open Sans', sans-serif;
     background-color: purple;
     color: #FFF;
     border: 1px solid #AAA;
@@ -212,13 +214,11 @@ input[type=checkbox] {
     display: block;
 }
 .input-data {
-  font-family: 'Open Sans', serif;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-size: 1.5em;
   line-height: 180%;
-  width: 725px;
+  width: 100%;
   padding-left: 10px;
-  margin-left: 60px;
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
     font-style: italic;

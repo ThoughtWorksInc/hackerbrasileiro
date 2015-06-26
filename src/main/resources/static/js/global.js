@@ -1,9 +1,20 @@
 (function($) {
 	'use strict'
 
-	// function (){
-	// 	this.final_screen_image = document.getElementById("final-screen-image");
-	// }
+	$('#hackerInfo').validator().on('submit', function (e) {
+		if (!e.isDefaultPrevented()) {
+			showCameraPage();
+		}
+		return false;
+	});
+
+		$('#agreementForm').validator().on('submit', function (e) {
+    		if (!e.isDefaultPrevented()) {
+    			showFormPage();
+    		}
+    		return false;
+    	});
+
 
 	function Camera() {
 		var canvas = document.getElementById("canvas");
@@ -83,4 +94,5 @@
 			elementToBeHidden.style.display = 'block';
 		});
 	};
+
 })($);

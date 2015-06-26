@@ -16,15 +16,15 @@
   <!-- INICIO DO HEADER -->
   <div id="header">
     <div class="row">
-        <div class="col-md-12" id="logo"> </div>
+        <div class="col-sm-12" id="logo"> </div>
     </div>
     <div class="row">
-        <div class="col-md-1" />
-        <div class="col-md-10">
-            <p id="main-header">AJUDE-NOS A CRIAR</p>
-            <p id="sub-header"><em>A CARA DO <span id="hacker">HACKER BRASILEIRO</span>!</em></p>
+        <div class="col-sm-1" />
+        <div class="col-sm-10">
+            <p id="main-header" class="main-header-normal-font">AJUDE-NOS A CRIAR</p>
+            <p id="sub-header" class="sub-header-normal-font">A CARA DO <span id="hacker">HACKER BRASILEIRO</span>!</p>
         </div>
-        <div class="col-md-1"/>
+        <div class="col-sm-1"/>
     </div>
   </div>
     <!-- FIM DO HEADER-->
@@ -32,56 +32,75 @@
     <!-- TELA INICIAL -->
     <div id="tela-inicial">
       <div class="row">
-        <div class="col-md-1" />
-          <div class="col-md-10">
+        <div class="col-sm-1" />
+          <div class="col-sm-10">
             <ul id="legal">
-              <li>Estou ciente que minhas informações podem ser usadas pela TW para bla01</li>
-              <li>Estou ciente que minhas informações podem ser usadas pela TW para bla02</li>
-              <li>Estou ciente que minhas informações podem ser usadas pela TW para bla03</li>
+              <li>Confirmo que sou maior de 18 (dezoito) anos e autorizo que a ThoughtWorks utilize minha imagem,
+                  coletada durante minha da participação no FISL 2015, estando autorizada a publicação em meios impressos
+                  ou digitais, a exclusivo critério da ThoughtWorks.</li>
             </ul>
           </div>
-        <div class="col-md-1"/>
+        <div class="col-sm-1"/>
       </div>
 
       <div class="row">
-          <div class="col-md-8"/>
-          <div class="col-md-3">
-              <button id="legal-button">Ler termos completos</button>
-          </div>
-          <div class="col-md-1"/>
-      </div>
+          <div class="col-sm-2"/>
+          <div class="col-sm-8" id="start-form">
+              <form id="agreementForm">
+                  <div class="form-group">
+                      <div class="checkbox">
+                          <label>
+                              <input type="checkbox" id="terms" data-error="Você precisa aceitar os termos para continuar." required="required"/>
+                              Li e concordo com os termos mencionados.
+                          </label>
+                          <div class="help-block with-errors"></div>
+                      </div>
+                  </div>
 
-      <div class="row">
-          <div class="col-md-3"/>
-          <div class="col-md-6" id="start-form">
-                  <input type="checkbox" value="ok" name="agreement"/> <span id="checkbox-agreement">Li e concordo com os termos mencionados.</span>
-                  <div id="empty-space"/>
-                  <button onclick="showFormPage()" class="confirm-button">COMEÇAR!</button>
+                  <button class="confirm-button" type="submit">COMEÇAR!</button>
+              </form>
           </div>
-          <div class="col-md-3"/>
+          <div class="col-sm-2"/>
       </div>
     </div>
 
     <!-- FIM DA TELA INICIAL -->
 
     <!-- INÍCIO DO FORMULARIO DE INFORMAÇÕES -->
-
     <div id="formulario-informacoes">
-      <div class="col-md-2"/>
-      <div class="col-md-8">
-        <p class="text">Qual seu primeiro nome?</p>
-        <input type="text" class="input-data" placeholder="Informe seu nome"/>
-        <p class="text">Qual seu sobrenome?</p>
-        <input type="text" class="input-data" placeholder="Informe seu sobrenome"/>
-        <p class="text">Qual seu email?</p>
-        <input type="text" class="input-data" placeholder="Informe seu email"/><br/>
-        <div id="start-form">
-          <button onclick="showCameraPage()" class="confirm-button">PROSSEGUIR</button>
-        </div>
-      </div>
-      <div class="col-md-2"/>
-    </div>
+        <div class="row">
+            <form data-toggle="validator" id="hackerInfo">
+              <div class="col-sm-1"/>
+              <div class="col-sm-10">
 
+                <div class="form-group">
+                  <label for="inputFirstName" class="text" >Qual seu primeiro nome?</label>
+                  <input id="inputFirstName" type="text" class="input-data" placeholder="Informe seu nome" required="required"
+                         data-error="Por favor, insira o seu nome"/>
+                  <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                  <label for="inputLastName" class="text">Qual seu sobrenome?</label>
+                  <input id="inputLastName" type="text" class="input-data" placeholder="Informe seu sobrenome" required="required"
+                         data-error="Por favor, insira o seu sobrenome"/>
+                  <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                  <label for="inputEmail" class="text">Qual seu email?</label>
+                  <input id="inputEmail" type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input-data" placeholder="Informe seu sobrenome" required="required"
+                         data-error="Por favor, insira um email válido"/>
+                  <div class="help-block with-errors"></div>
+                </div>
+
+                <div class="form-group">
+                    <button  class="confirm-button" type="submit">PROSSEGUIR</button>
+                </div>
+
+              </div>
+              <div class="col-sm-1"/>
+            </form>
+        </div>
+    </div>
     <!-- FIM DO FORMULÁRIO DE INFORMAÇÕES -->
 
     <!-- INÍCIO MOSTRAR CÂMERA -->
@@ -89,40 +108,41 @@
         <span class="btn-file">
             SHOOT!<input onchange="photoTaken()" type="file" accept="image/*;capture=camera" id="cameraInput" name="cameraInput"/>
         </span>
-      <div class="col-md-3"/>
-      <div class="col-md-6" id="low-center">
+      <div class="col-sm-3"/>
+      <div class="col-sm-6" id="low-center">
         <button class="confirm-button" id="take-picture">SHOOT!</button>
       </div>
-      <div class="col-md-3"/>
+      <div class="col-sm-3"/>
     </div>
     <!-- FIM MOSTRAR CÂMERA -->
 
     <!--&lt;!&ndash; INICIO MOSTRAR FOTOS &ndash;&gt;-->
     <!--<div id="camera-picture">-->
       <!--<canvas id="canvas"></canvas>-->
-      <!--<div class="col-md-3"/>-->
-      <!--<div class="col-md-6" id="low-center-confirm">-->
+      <!--<div class="col-sm-3"/>-->
+      <!--<div class="col-sm-6" id="low-center-confirm">-->
         <!--<div id="buttons-pictures">-->
           <!--<button class="cancel-button" id="restart-camera">TENTAR DE NOVO</button>-->
           <!--<button class="ok-button" id="show-final-screen">SALVAR</button>-->
         <!--</div>-->
       <!--</div>-->
-      <!--<div class="col-md-3"/>-->
+      <!--<div class="col-sm-3"/>-->
     <!--</div>-->
     <!--&lt;!&ndash; FIM MOSTRAR FOTOS&ndash;&gt;-->
 
     <!-- INICIO TELA FINAL-->
     <div id="final-screen">
       <img src="" alt="hackerImage" id="final-screen-image" />
-      <div class="col-md-3"/>
+      <div class="col-sm-3"/>
     </div>
     <!-- FIM TELA FINAL-->
 
 </div>
 <script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/jquery.validate.min.js"></script>
+<script src="js/validator.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/global.js"></script>
 <script src="js/button-control.js"></script>
+
 </body>
 </html>
