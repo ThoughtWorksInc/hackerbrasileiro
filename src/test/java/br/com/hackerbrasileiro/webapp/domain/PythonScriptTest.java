@@ -4,7 +4,6 @@ package br.com.hackerbrasileiro.webapp.domain;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertFalse;
 
 public class PythonScriptTest {
 
@@ -24,6 +23,5 @@ public class PythonScriptTest {
     public void shouldExecuteScript() throws Exception {
         PythonScript pythonScript = new PythonScript("src/test/resources/test.py", "python", "custom message");
         pythonScript.execute();
-        assertFalse(true);
     }
 }
