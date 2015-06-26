@@ -1,5 +1,6 @@
 package br.com.hackerbrasileiro.webapp.domain;
 
+import br.com.hackerbrasileiro.webapp.domain.validator.FileValidator;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,8 @@ import static lombok.AccessLevel.PRIVATE;
 @FieldDefaults(level = PRIVATE)
 public class Hackers implements CsvFile {
 
-    public static final String FILE_NAME_OUTPUT = "src/main/resources/files/hackers_%s.csv";
+    public static final String PATH = "src/main/resources/files/";
+    public static final String FILE_NAME = "hackers_%s.csv";
     public static final String NEW_LINE = "\n";
 
     Photos photos;
@@ -63,7 +65,7 @@ public class Hackers implements CsvFile {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
 
-        return String.format(FILE_NAME_OUTPUT, dateFormat.format(date));
+        return String.format(PATH.concat(FILE_NAME), dateFormat.format(date));
     }
 
     private String formatLine(Hacker hacker, String UUID) {
@@ -71,17 +73,10 @@ public class Hackers implements CsvFile {
     }
 
     private void addLine(String csvLine) throws IOException {
-        createFileIfDoesNotExist();
-
+        FileValidator.createFolderIfDoesNotExistsFor(PATH);
+        FileValidator.createFileIfDoesNotExistsFor(getFileName());
         FileWriter fileWriter = new FileWriter(getFileName(), true);
         fileWriter.write(csvLine);
         fileWriter.close();
-    }
-
-    private void createFileIfDoesNotExist() throws IOException {
-        File file = new File(getFileName());
-        if (!file.exists()) {
-            file.createNewFile();
-        }
     }
 }
