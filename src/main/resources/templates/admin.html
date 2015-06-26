@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>ThoughtWorks - FISL</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel="stylesheet" type="text/css"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet"/>
+    <link href="css/main.css" rel="stylesheet"/>
+
+</head>
+<body>
+
+<br />
+<form action="#" th:action="@{/admin}" method="post">
+    <div th:text="'Você possui ' + ${adminModel.numberOfPhotos} + ' fotos.' " />
+
+    <button class="btn btn-primary">Gerar foto</button>
+</form>
+
+<br />
+
+<form action="#" th:action="@{/admin/email}" method="post">
+
+    <div th:if="${adminModel.email} != null">
+        A pessoa sorteada é: <span th:text="${adminModel.name}"/> (<span th:text="${adminModel.email}" />).
+    </div>
+
+    <button class="btn btn-primary">Sortear email</button>
+</form>
+</body>
+</html>

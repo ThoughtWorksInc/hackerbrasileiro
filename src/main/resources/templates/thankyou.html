@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handing Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+<p th:text="'Fist name: ' + ${hacker.firstName}" />
+<p th:text="'Last name: ' + ${hacker.lastName}" />
+<p th:text="'E-mail: ' + ${hacker.email}" />
+<p th:text="'Image(base64): ' + ${hacker.imageData}" />
+<a href="/home">Submit another message</a>
+</body>
+</html>

@@ -1,0 +1,40 @@
+body
+{
+	background-image: url("../img/TW_Black_White.jpg") !important;
+	background-size: 1024px 768px; 
+	font-size: 20px;
+}
+
+video 
+{
+	border: 1px solid black;
+}
+
+.panel
+{
+		background: rgba(255, 255, 255, 0.85) !important;
+}
+
+#panelHolder {
+	margin-top: 75px;
+}
+
+.super-input 
+{
+	line-height: 36px !important;
+	height: 46px;
+	padding: 10px 16px;
+	font-size: 20px;
+  	line-height: 1.3333333;
+  	border-radius: 6px;
+}
+
+.super-button 
+{
+	line-height: 40px !important;
+	height: 56px;
+	padding: 0px 50px;
+	font-size: 20px;
+  	line-height: 1.3333333;
+  	border-radius: 6px;
+}

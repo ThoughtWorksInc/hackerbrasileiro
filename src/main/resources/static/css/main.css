@@ -1,0 +1,240 @@
+#tela-inicial {
+  display: block;
+  margin-top: 250px;
+}
+
+#formulario-informacoes {
+  display:none;
+  margin-top: 250px;
+}
+
+#camera-show {
+  display: none;
+}
+
+#camera-picture {
+  display: none;
+}
+
+#final-screen {
+  display: none;
+  margin-top: 250px;
+}
+
+#logo {
+  background-image: url("../img/logotw.png");
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+#header {
+  position: absolute;
+  width: 90%;
+  font-family: 'Open Sans', sans-serif;
+}
+#main-header {
+    font-size: 2.7em;
+    margin-bottom: 0px;
+    line-height: 90%;
+}
+
+#low-center {
+  width: 350px;
+  margin: auto;
+  margin-top: 575px;
+  margin-left: 122px;
+
+}
+
+#low-center-confirm {
+  margin: auto;
+  margin-top: 575px;
+  margin-left: 15px;
+
+}
+
+#video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+}
+
+#sub-header {
+    font-size: 3.5em;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+#hacker {
+    font-weight: 800;
+}
+
+#canvas {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+
+}
+
+#legal {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.9em;
+}
+
+#legal-button {
+    background-color: #FFF;
+    border: 1px solid #AAA;
+    font-size: 1.5em;
+    padding: 5px;
+    width: 250px;
+    margin-left: 25px;
+}
+
+ul li {
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+#start-form {
+    text-align: center;
+    padding-top: 20px;
+}
+
+#checkbox-agreement {
+  font-size: 1.7em;
+  padding-left: 20px;
+}
+
+.confirm-button {
+  font-family: 'Open Sans', sans-serif;
+  background-color: purple;
+  color: #FFF;
+  border: 1px solid #AAA;
+  font-size: 2em;
+  font-weight: 800;
+  padding: 5px;
+  width: 350px;
+  height: 70px;
+}
+
+.cancel-button {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #999;
+  color: #FFF;
+  border: 1px solid #AAA;
+  font-size: 1.4em;
+  font-weight: 800;
+  padding: 5px;
+  width: 225px;
+  height: 70px;
+  float: left;
+  margin-left: 20px;
+}
+
+.ok-button {
+  font-family: 'Open Sans', sans-serif;
+  background-color: purple;
+  color: #FFF;
+  border: 1px solid #AAA;
+  font-size: 1.5em;
+  font-weight: 800;
+  padding: 5px;
+  width: 225px;
+  height: 70px;
+  margin-left: 20px;
+}
+input[type=checkbox] {
+  /* All browsers except webkit*/
+  transform: scale(2.5);
+
+  /* Webkit browsers*/
+  -webkit-transform: scale(2.5);
+}
+
+.text {
+  font-size: 2.1em;
+  font-family: 'Open Sans', serif;
+  padding-left: 60px;
+  margin-bottom: 0px;
+  padding-bottom: 5px;
+}
+
+#empty-space {
+  height: 30px;
+}
+
+.btn-file {
+    position: relative;
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    background-color: purple;
+    color: #FFF;
+    border: 1px solid #AAA;
+    font-size: 2em;
+    font-weight: 800;
+    width: 350px;
+    height: 70px;
+    text-align: center;
+    line-height:70px;
+
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100%;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+.input-data {
+  font-family: 'Open Sans', serif;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  line-height: 180%;
+  width: 725px;
+  padding-left: 10px;
+  margin-left: 60px;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    font-style: italic;
+    color: #CCC;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  font-style: italic;
+  color: #CCC;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  font-style: italic;
+  color: #CCC;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  font-style: italic;
+  color: #CCC;
+}
