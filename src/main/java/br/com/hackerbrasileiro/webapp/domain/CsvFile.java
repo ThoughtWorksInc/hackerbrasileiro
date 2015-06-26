@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface CsvFile {
 
-    public static final String FILE_NAME = "hackers_%s.csv";
-    public static final String NEW_LINE = "\n";
-    public static final String PATH = "src/main/resources/files/";
+    static final String FILE_NAME = "hackers_%s.csv";
+    static final String NEW_LINE = "\n";
+    static final String PATH = "src/main/resources/files/";
 
     String formatLine(Hacker hacker, String UUID);
 
