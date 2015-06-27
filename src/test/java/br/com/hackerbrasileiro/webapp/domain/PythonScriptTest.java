@@ -3,7 +3,8 @@ package br.com.hackerbrasileiro.webapp.domain;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class PythonScriptTest {
 
@@ -16,6 +17,6 @@ public class PythonScriptTest {
         String[] command = pythonScript.getScriptCommand();
 
         String[] expectedResult = new String[]{interpreter, script, args};
-        assertArrayEquals(command, expectedResult);
+        assertThat(command, is(expectedResult));
     }
 }

@@ -9,13 +9,13 @@ import org.mockito.Mock;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.web.servlet.ModelAndView;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class HomeControllerTest {
+public class HackerControllerTest {
 
-    HomeController homeController;
+    HackerController hackerController;
 
     @Mock
     Hackers hackers;
@@ -26,21 +26,13 @@ public class HomeControllerTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        homeController = new HomeController(hackers);
+        hackerController = new HackerController(hackers);
     }
 
     @Test
-    public void shouldShowHomeViewTest() throws Exception {
+    public void saveTest() throws Exception {
         ExtendedModelMap model = new ExtendedModelMap();
-        ModelAndView homeView = homeController.createHome(model);
-
-        assertThat(homeView.getViewName(), is("home"));
-    }
-
-    @Test
-    public void greetingSubmitTest() throws Exception {
-        ExtendedModelMap model = new ExtendedModelMap();
-        ModelAndView homeView = homeController.greetingSubmit(getHacker(), model);
+        ModelAndView homeView = hackerController.save(getHacker(), model);
 
         assertThat(homeView.getViewName(), is("thankyou"));
     }

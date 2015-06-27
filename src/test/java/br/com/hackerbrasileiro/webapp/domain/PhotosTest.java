@@ -1,12 +1,12 @@
 package br.com.hackerbrasileiro.webapp.domain;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
 import java.util.Scanner;
 
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class PhotosTest {
 
@@ -23,7 +23,7 @@ public class PhotosTest {
         File file = new File(FOLDER_NAME.concat(fileName).concat(FILE_NAME_EXTENSION));
         boolean fileExists = file.exists() && !file.isDirectory();
 
-        assertTrue(fileExists);
+        assertThat(fileExists, is(true));
 
         file.delete();
     }
@@ -32,6 +32,6 @@ public class PhotosTest {
     public void shouldGetImageAsByteArrayTest() throws Exception {
         Photos photos = new Photos();
         byte[] imageByteArray = photos.getImageAsByteArray("src/test/resources/result.png");
-        assertTrue(imageByteArray.length > 0);
+        assertThat(imageByteArray.length > 0, is(true));
     }
 }

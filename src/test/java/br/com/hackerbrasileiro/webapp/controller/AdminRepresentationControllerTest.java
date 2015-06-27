@@ -8,8 +8,7 @@ import org.mockito.Mock;
 import org.springframework.web.servlet.ModelAndView;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -40,6 +39,6 @@ public class AdminRepresentationControllerTest {
     @Test
     public void runScriptTest() throws Exception {
         byte[] result = adminController.runScript();
-        assertTrue(result.length > 0);
+        assertThat(result.length > 0, is(true));
     }
 }
