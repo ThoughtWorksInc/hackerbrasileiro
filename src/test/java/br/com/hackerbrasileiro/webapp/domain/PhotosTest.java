@@ -14,7 +14,7 @@ public class PhotosTest {
     private static final String FOLDER_NAME = "src/main/resources/photos/";
     private static final String BASE64_IMAGE = "src/test/resources/photoTest.txt";
 
-    @Test @Ignore
+    @Test
     public void shouldSavePNGImageFromBase64Test() throws Exception {
         Photos photos = new Photos();
         String content = new Scanner(new File(BASE64_IMAGE)).next();
@@ -28,7 +28,7 @@ public class PhotosTest {
         file.delete();
     }
 
-    @Test @Ignore
+    @Test
     public void shouldGetImageAsByteArrayTest() throws Exception {
         Photos photos = new Photos();
         byte[] imageByteArray = photos.getImageAsByteArray("src/test/resources/result.png");

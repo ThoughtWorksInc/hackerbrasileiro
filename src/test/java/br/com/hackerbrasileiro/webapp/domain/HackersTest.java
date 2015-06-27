@@ -1,7 +1,6 @@
 package br.com.hackerbrasileiro.webapp.domain;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 
@@ -15,7 +14,8 @@ import static org.mockito.MockitoAnnotations.initMocks;
 
 public class HackersTest {
 
-    @Mock private Photos photos;
+    @Mock
+    private Photos photos;
     private Hackers hackers;
 
     @Before
@@ -24,7 +24,7 @@ public class HackersTest {
         hackers = new Hackers(photos);
     }
 
-    @Test @Ignore
+    @Test
     public void shouldSaveHackerTest() throws Exception {
         Hacker hacker = getHacker();
 
@@ -34,7 +34,7 @@ public class HackersTest {
         verify(photos).save("photo");
     }
 
-    @Test @Ignore
+    @Test
     public void shouldGetDailyListTest() throws Exception {
         Hacker hacker = getHacker();
 
@@ -42,7 +42,7 @@ public class HackersTest {
         hackers.save(hacker);
 
         List<Hacker> hackersList = hackers.getHackersDaily();
-        Hacker lastHacker = hackersList.get(hackersList.size()-1);
+        Hacker lastHacker = hackersList.get(hackersList.size() - 1);
 
         assertThat(lastHacker.getEmail(), is(hacker.getEmail()));
     }
