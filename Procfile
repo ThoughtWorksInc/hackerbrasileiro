@@ -1,1 +1,1 @@
-web: java -jar build/libs/hackerbrasileiro.jar
+web: java -jar hackerbrasileiro.jar

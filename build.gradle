@@ -11,15 +11,20 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
-jar {
-    from {
-        configurations.compile.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-        configurations.runtime.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
+mainClassName = 'br.com.hackerbrasileiro.webapp.Application'
+
+task stage(type: Copy, dependsOn: ['clean', 'build']) {
+    from jar.archivePath
+    into project.rootDir
+    rename {
+        'hackerbrasileiro.jar'
     }
+}
+
+stage.mustRunAfter(clean)
+
+clean << {
+    project.file('hackerbrasileiro.jar').delete()
 }
 
 repositories {
