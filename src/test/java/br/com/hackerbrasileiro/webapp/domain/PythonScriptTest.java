@@ -18,10 +18,4 @@ public class PythonScriptTest {
         String[] expectedResult = new String[]{interpreter, script, args};
         assertArrayEquals(command, expectedResult);
     }
-
-    @Test
-    public void shouldExecuteScript() throws Exception {
-        PythonScript pythonScript = new PythonScript("src/test/resources/test.py", "python", "custom message");
-        pythonScript.execute();
-    }
 }
