@@ -32,7 +32,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView createAdminView() throws IOException {
-        int numberOfPhotos = photos.countNumberOfFilesInFolder("photos");
+        Integer numberOfPhotos = photos.countNumberOfFilesInFolder("photos");
         return new ModelAndView("admin", "adminModel", new AdminRepresentation(numberOfPhotos));
     }
 
@@ -47,7 +47,7 @@ public class AdminController {
     @RequestMapping(value = "/admin/email", method = RequestMethod.POST)
     public ModelAndView getRandomEmail() throws IOException{
         Hacker hacker = randomHacker.getRandomHacker();
-        int numberOfPhotos = photos.countNumberOfFilesInFolder("photos");
+        Integer numberOfPhotos = photos.countNumberOfFilesInFolder("photos");
 
         return new ModelAndView("admin", "adminModel", new AdminRepresentation(numberOfPhotos, hacker.getFullName(), hacker.getEmail()));
     }

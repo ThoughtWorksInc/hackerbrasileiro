@@ -13,20 +13,6 @@ apply plugin: 'spring-boot'
 
 mainClassName = 'br.com.hackerbrasileiro.webapp.Application'
 
-task stage(type: Copy, dependsOn: ['clean', 'build']) {
-    from jar.archivePath
-    into project.rootDir
-    rename {
-        'hackerbrasileiro.jar'
-    }
-}
-
-stage.mustRunAfter(clean)
-
-clean << {
-    project.file('hackerbrasileiro.jar').delete()
-}
-
 repositories {
     mavenCentral()
 }
@@ -41,6 +27,40 @@ dependencies {
     testCompile("org.mockito:mockito-all:1.8.4")
 }
 
+task bringUpAppServer(type: Exec, dependsOn: ['clean', 'build']) {
+    commandLine "vagrant", "up", "--no-provision"
+}
+
+task provisionAppServer(type: Exec) {
+    commandLine "vagrant", "provision"
+}
+
+provisionAppServer.mustRunAfter(bringUpAppServer)
+
+task deployAppServer(type: Exec, dependsOn: [bringUpAppServer, provisionAppServer])
+
+task destroyAppServer(type: Exec) {
+    commandLine "vagrant", "destroy", "--force"
+}
+
+task stage(type: Copy, dependsOn: ['clean', 'build']) {
+    from jar.archivePath
+    into project.rootDir
+    rename {
+        'hackerbrasileiro.jar'
+    }
+}
+
+stage.mustRunAfter(clean)
+
+clean << {
+    project.file('hackerbrasileiro.jar').delete()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
 test {
 
     clean.execute()
@@ -53,8 +73,4 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
 }

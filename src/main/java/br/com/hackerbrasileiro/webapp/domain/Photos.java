@@ -36,8 +36,12 @@ public class Photos {
         return result;
     }
 
-    public int countNumberOfFilesInFolder(String folder) throws IOException {
-        return new File(folder).list().length;
+    public Integer countNumberOfFilesInFolder(String folder) {
+        try {
+            return new File(folder).list().length;
+        } catch (Exception ex) {
+            return 0;
+        }
     }
 
     private byte[] convertToByteArray(String text) {
