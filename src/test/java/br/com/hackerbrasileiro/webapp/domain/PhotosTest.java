@@ -11,7 +11,7 @@ import static org.hamcrest.core.Is.is;
 public class PhotosTest {
 
     private static final String FILE_NAME_EXTENSION = ".png";
-    private static final String FOLDER_NAME = "src/main/resources/photos/";
+    private static final String FOLDER_NAME = "photos/";
     private static final String BASE64_IMAGE = "src/test/resources/photoTest.txt";
 
     @Test

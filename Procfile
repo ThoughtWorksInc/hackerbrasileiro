@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT -jar hackerbrasileiro.jar
+web: java $JAVA_OPTS -Dserver.port=80 -jar hackerbrasileiro.jar

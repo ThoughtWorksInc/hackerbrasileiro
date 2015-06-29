@@ -14,7 +14,7 @@ import java.util.UUID;
 @Component
 public class Photos {
 
-    private static final String FOLDER_NAME = "src/main/resources/photos/";
+    private static final String FOLDER_NAME = "photos/";
     private static final String FILE_NAME_EXTENSION = ".png";
     private static final String DATA_TYPE_INFO = "data:image/png;base64,";
     private static final String READ_MODE = "r";
