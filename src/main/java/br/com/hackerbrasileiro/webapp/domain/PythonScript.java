@@ -12,7 +12,6 @@ import static lombok.AccessLevel.PRIVATE;
 public class PythonScript {
     String script;
     String interpreter;
-    String args;
 
     public void execute() throws IOException, InterruptedException {
         Runtime runtime = Runtime.getRuntime();
@@ -20,10 +19,9 @@ public class PythonScript {
     }
 
     public String[] getScriptCommand() {
-        String[] command = new String[3];
+        String[] command = new String[2];
         command[0] = interpreter;
         command[1] = script;
-        command[2] = args;
         return command;
     }
 }

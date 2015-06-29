@@ -12,11 +12,10 @@ public class PythonScriptTest {
     public void shouldReturnTheCorrectCommand() throws Exception {
         final String interpreter = "interpreter";
         final String script = "script";
-        final String args = "args";
-        PythonScript pythonScript = new PythonScript(script, interpreter, args);
+        PythonScript pythonScript = new PythonScript(script, interpreter);
         String[] command = pythonScript.getScriptCommand();
 
-        String[] expectedResult = new String[]{interpreter, script, args};
+        String[] expectedResult = new String[]{interpreter, script};
         assertThat(command, is(expectedResult));
     }
 }

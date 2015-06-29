@@ -17,6 +17,7 @@ public class Hacker {
     public String getFullName() {
         return String.format("%s %s", firstName, lastName);
     }
+
     @Override
     public String toString() {
         return String.format("%s, %s, %s,", this.firstName, this.lastName,  this.email);

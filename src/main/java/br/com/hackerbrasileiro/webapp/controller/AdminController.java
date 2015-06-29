@@ -6,6 +6,7 @@ import br.com.hackerbrasileiro.webapp.domain.PythonScript;
 import br.com.hackerbrasileiro.webapp.domain.RandomHacker;
 import br.com.hackerbrasileiro.webapp.controller.representation.AdminRepresentation;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,14 +39,14 @@ public class AdminController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.POST, produces = "image/png")
     public @ResponseBody byte[] runScript() throws IOException, InterruptedException {
-        PythonScript pythonScript = new PythonScript("facemorpher/generate.py", "python", "");
+        PythonScript pythonScript = new PythonScript("facemorpher/generate.py", "python");
         pythonScript.execute();
 
         return photos.getImageAsByteArray("facemorpher/result.png");
     }
 
     @RequestMapping(value = "/admin/email", method = RequestMethod.POST)
-    public ModelAndView getRandomEmail() throws IOException{
+    public ModelAndView getRandomEmail() throws IOException {
         Hacker hacker = randomHacker.getRandomHacker();
         Integer numberOfPhotos = photos.countNumberOfFilesInFolder("photos");
 

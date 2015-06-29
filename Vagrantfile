@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu-14.04"
-  config.vm.box_url = "http://files.dryga.com/boxes/osx-yosemite-0.2.0.box"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   config.vm.define "hackerbrasileiro" do |hb|
   end

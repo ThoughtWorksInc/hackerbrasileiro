@@ -32,8 +32,8 @@ git clone https://github.com/alyssaq/stasm_build.git
 patch apps/appmisc.cpp < stasm_build/patches/appmisc.cpp.20140201.diff
 patch apps/shapefile/shapefile.cpp < stasm_build/patches/shapefile.cpp.20140201.diff
 rm -r stasm_build/patches
-cp stasm_build/* .
+sudo cp stasm_build/* .
 mkdir build && cd build
 cmake ../
 make
-sudo cp ~/stasm4.1.0/build/stasm_util /usr/local/lib/python2.7/dist-packages/facemorpher/bin/stasm_util
+sudo cp stasm_util /usr/local/lib/python2.7/dist-packages/facemorpher/bin/stasm_util
