@@ -31,10 +31,9 @@ public class HackerControllerTest {
 
     @Test
     public void saveTest() throws Exception {
-        ExtendedModelMap model = new ExtendedModelMap();
-        ModelAndView homeView = hackerController.save(getHacker(), model);
+        String homeView = hackerController.save(getHacker());
 
-        assertThat(homeView.getViewName(), is("thankyou"));
+        assertThat(homeView, is("redirect:newhome"));
     }
 
     private Hacker getHacker() {

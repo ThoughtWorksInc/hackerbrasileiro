@@ -37,7 +37,7 @@ function photoTaken() {
         $("#firstName").val(firstName);
         $("#lastName").val(lastName);
         $("#email").val(email);
-        $("#imageData").val(getBase64Image(event.target.result));
+        $("#imageData").val(getBase64Image(img));
     }
 }
 
