@@ -15,7 +15,6 @@ function showCameraPage() {
     elementToBeShown.style.display = 'block';
 }
 
-
 function photoTaken() {
     var img = document.getElementById("final-screen-image");
     var fReader = new FileReader();
@@ -23,12 +22,32 @@ function photoTaken() {
     fReader.onloadend = function(event) {
         var elementToBeShown = document.getElementById("camera-show");
         elementToBeShown.style.display = 'none';
+        var elementToBeShown = document.getElementById("formulario-informacoes");
+                elementToBeShown.style.display = 'none';
 
     	var elementToBeHidden = document.getElementById("final-screen");
     	elementToBeHidden.style.display = 'block';
 
     	img.src = event.target.result;
+
+        var firstName = $("#inputFirstName").val();
+        var lastName = $("#inputLastName").val();
+        var email = $("#inputEmail").val();
+
+        $("#firstName").val(firstName);
+        $("#lastName").val(lastName);
+        $("#email").val(email);
+        $("#imageData").val(getBase64Image(event.target.result));
     }
+}
+
+function getBase64Image(img) {
+  var canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+  return canvas.toDataURL("image/png");
 }
 
 function reduceHeaderSize(){

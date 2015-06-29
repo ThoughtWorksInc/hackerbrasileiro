@@ -1,28 +1,30 @@
 (function($) {
 	'use strict'
 
-	$('#hackerInfo').validator().on('submit', function (e) {
-		if (!e.isDefaultPrevented()) {
-			showCameraPage();
-			var firstName = $("#inputFirstName").val();
-			var lastName = $("#inputLastName").val();
-			var email = $("#inputEmail").val();
-
-			$("#firstName").val(firstName);
-			$("#lastName").val(lastName);
-			$("#email").val(email);
-		}
-		showCameraPage();
-		return false;
-	});
-
 	$('#agreementForm').validator().on('submit', function (e) {
 		if (!e.isDefaultPrevented()) {
 			showFormPage();
+			showCameraPage();
 		}
 		showFormPage();
+
 		return false;
 	});
+
+//	$('#hackerInfo').validator().on('submit', function (e) {
+//		if (!e.isDefaultPrevented()) {
+//			showCameraPage();
+////			var firstName = $("#inputFirstName").val();
+////			var lastName = $("#inputLastName").val();
+////			var email = $("#inputEmail").val();
+////
+////			$("#firstName").val(firstName);
+////			$("#lastName").val(lastName);
+////			$("#email").val(email);
+//		}
+//		//showCameraPage();
+//		return false;
+//	});
 
 	function Camera() {
 		var canvas = document.getElementById("canvas");

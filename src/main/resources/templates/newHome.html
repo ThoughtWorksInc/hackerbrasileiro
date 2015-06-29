@@ -82,10 +82,19 @@
                             <div class="help-block with-errors"></div>
                         </div>
 
-                        <div class="form-group text-center">
-                            <button class="confirm-button" type="submit">PROSSEGUIR</button>
+                        <!--<div class="form-group text-center">-->
+                            <!--<button class="confirm-button" type="submit">PROSSEGUIR</button>-->
+                        <!--</div>-->
+                        <div id="camera-show">
+                            <div class="col-sm-3"/>
+                            <div class="col-sm-5 text-center">
+                                 <span class="btn-file">
+                                    SHOOT!<input onchange="photoTaken()" type="file" accept="image/*;capture=camera" id="cameraInput"
+                                                 name="cameraInput"/>
+                                </span>
+                            </div>
+                            <div class="col-sm-4"/>
                         </div>
-
                     </div>
                     <div class="col-sm-1"/>
                 </form>
@@ -94,17 +103,17 @@
         <!-- FIM DO FORMULÁRIO DE INFORMAÇÕES -->
 
         <!-- INÍCIO MOSTRAR CÂMERA -->
-        <div id="camera-show">
+        <!--<div id="camera-show">-->
 
-            <div class="col-sm-3"/>
-            <div class="col-sm-5 text-center">
-                 <span class="btn-file">
-                    SHOOT!<input onchange="photoTaken()" type="file" accept="image/*;capture=camera" id="cameraInput"
-                                 name="cameraInput"/>
-                </span>
-            </div>
-            <div class="col-sm-4"/>
-        </div>
+            <!--<div class="col-sm-3"/>-->
+            <!--<div class="col-sm-5 text-center">-->
+                 <!--<span class="btn-file">-->
+                    <!--SHOOT!<input onchange="photoTaken()" type="file" accept="image/*;capture=camera" id="cameraInput"-->
+                                 <!--name="cameraInput"/>-->
+                <!--</span>-->
+            <!--</div>-->
+            <!--<div class="col-sm-4"/>-->
+        <!--</div>-->
 
         <!-- INICIO TELA FINAL-->
         <div id="final-screen">
@@ -123,7 +132,7 @@
             <div class="row">
                 <div class="col-sm-2"/>
                 <div class="col-sm-8" >
-                    <form th:action="@{/save}" th:object="${hacker}" method="post">
+                    <form action="#" th:action="@{/save}" th:object="${hacker}" method="post">
                         <input type="hidden" name="email" id="email" th:field="*{email}" />
                         <input type="hidden" name="firstName" id="firstName" th:field="*{firstName}" />
                         <input type="hidden" name="lastName" id="lastName" th:field="*{lastName}" />
