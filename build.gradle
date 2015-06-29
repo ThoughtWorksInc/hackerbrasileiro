@@ -43,9 +43,12 @@ task provisionAppServer(type: Exec) {
     commandLine "vagrant", "provision"
 }
 
-provisionAppServer.mustRunAfter(bringUpAppServer)
+task deployAppServer(type: Exec) {
+    commandLine 'sh', 'infrastructure/scripts/local/install.sh'
+}
 
-task deployAppServer(type: Exec, dependsOn: hackerBrasileiroJar)
+provisionAppServer.mustRunAfter(bringUpAppServer)
+deployAppServer.mustRunAfter(provisionAppServer)
 
 task destroyAppServer(type: Exec) {
     commandLine "vagrant", "destroy", "--force"
