@@ -1,148 +1,153 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>ThoughtWorks - FISL</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'/>
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet"/>
-    <link href="css/main.css" rel="stylesheet"/>
+<head th:replace="fragments/head"></head>
 
-</head>
 <body scroll="no">
-<div class="container-fluid">
 
-  <!-- INICIO DO HEADER -->
-  <div id="header">
-    <div class="row">
-        <div class="col-sm-12" id="logo"> </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-1" />
-        <div class="col-sm-10">
-            <p id="main-header" class="main-header-normal-font">AJUDE-NOS A CRIAR</p>
-            <p id="sub-header" class="sub-header-normal-font">A CARA DO <span id="hacker">HACKER BRASILEIRO</span>!</p>
+    <div class="container-fluid">
+
+        <header th:replace="fragments/header"></header>
+
+        <!-- TELA INICIAL -->
+        <div id="tela-inicial">
+            <div class="row">
+                <div class="col-sm-1"/>
+                <div class="col-sm-10">
+                    <p id="legal">
+                        Confirmo que sou maior de 18 (dezoito) anos e autorizo que a ThoughtWorks utilize minha imagem,
+                        coletada durante minha da participação no FISL 2015, estando autorizada a publicação em meios
+                        impressos
+                        ou digitais, a exclusivo critério da ThoughtWorks.
+                    </p>
+                </div>
+                <div class="col-sm-1"/>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2"/>
+                <div class="col-sm-8">
+                    <form id="agreementForm">
+                        <div class="form-group text-center">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="agreementCheckbox"
+                                           data-error="Você precisa aceitar os termos para continuar." required="required"/>
+                                    Li e concordo com os termos mencionados.
+                                </label>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <button class="confirm-button" type="submit">COMEÇAR!</button>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="col-sm-2"/>
+            </div>
         </div>
-        <div class="col-sm-1"/>
-    </div>
-  </div>
-    <!-- FIM DO HEADER-->
 
-    <!-- TELA INICIAL -->
-    <div id="tela-inicial">
-      <div class="row">
-        <div class="col-sm-1" />
-          <div class="col-sm-10">
-            <ul id="legal">
-              <li>Confirmo que sou maior de 18 (dezoito) anos e autorizo que a ThoughtWorks utilize minha imagem,
-                  coletada durante minha da participação no FISL 2015, estando autorizada a publicação em meios impressos
-                  ou digitais, a exclusivo critério da ThoughtWorks.</li>
-            </ul>
-          </div>
-        <div class="col-sm-1"/>
-      </div>
+        <!-- FIM DA TELA INICIAL -->
 
-      <div class="row">
-          <div class="col-sm-2"/>
-          <div class="col-sm-8" id="start-form">
-              <form id="agreementForm">
-                  <div class="form-group">
-                      <div class="checkbox">
-                          <label>
-                              <input type="checkbox" id="terms" data-error="Você precisa aceitar os termos para continuar." required="required"/>
-                              Li e concordo com os termos mencionados.
-                          </label>
-                          <div class="help-block with-errors"></div>
-                      </div>
-                  </div>
+        <!-- INÍCIO DO FORMULARIO DE INFORMAÇÕES -->
+        <div id="formulario-informacoes">
+            <div class="row">
+                <form data-toggle="validator" id="hackerInfo">
+                    <div class="col-sm-1"/>
+                    <div class="col-sm-10">
 
-                  <button class="confirm-button" type="submit">COMEÇAR!</button>
-              </form>
-          </div>
-          <div class="col-sm-2"/>
-      </div>
-    </div>
+                        <div class="form-group">
+                            <label for="inputFirstName" class="text">Qual seu primeiro nome?</label>
+                            <input id="inputFirstName" type="text" class="input-data" placeholder="Informe seu nome"
+                                   required="required"
+                                   data-error="Por favor, insira o seu nome"/>
 
-    <!-- FIM DA TELA INICIAL -->
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLastName" class="text">Qual seu sobrenome?</label>
+                            <input id="inputLastName" type="text" class="input-data" placeholder="Informe seu sobrenome"
+                                   required="required"
+                                   data-error="Por favor, insira o seu sobrenome"/>
 
-    <!-- INÍCIO DO FORMULARIO DE INFORMAÇÕES -->
-    <div id="formulario-informacoes">
-        <div class="row">
-            <form data-toggle="validator" id="hackerInfo">
-              <div class="col-sm-1"/>
-              <div class="col-sm-10">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="text">Qual seu email?</label>
+                            <input id="inputEmail" type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                   class="input-data" placeholder="Informe seu sobrenome" required="required"
+                                   data-error="Por favor, insira um email válido"/>
 
-                <div class="form-group">
-                  <label for="inputFirstName" class="text" >Qual seu primeiro nome?</label>
-                  <input id="inputFirstName" type="text" class="input-data" placeholder="Informe seu nome" required="required"
-                         data-error="Por favor, insira o seu nome"/>
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                  <label for="inputLastName" class="text">Qual seu sobrenome?</label>
-                  <input id="inputLastName" type="text" class="input-data" placeholder="Informe seu sobrenome" required="required"
-                         data-error="Por favor, insira o seu sobrenome"/>
-                  <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                  <label for="inputEmail" class="text">Qual seu email?</label>
-                  <input id="inputEmail" type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input-data" placeholder="Informe seu sobrenome" required="required"
-                         data-error="Por favor, insira um email válido"/>
-                  <div class="help-block with-errors"></div>
-                </div>
+                            <div class="help-block with-errors"></div>
+                        </div>
 
-                <div class="form-group">
-                    <button  class="confirm-button" type="submit">PROSSEGUIR</button>
-                </div>
+                        <div class="form-group text-center">
+                            <button class="confirm-button" type="submit">PROSSEGUIR</button>
+                        </div>
 
-              </div>
-              <div class="col-sm-1"/>
-            </form>
+                    </div>
+                    <div class="col-sm-1"/>
+                </form>
+            </div>
         </div>
+        <!-- FIM DO FORMULÁRIO DE INFORMAÇÕES -->
+
+        <!-- INÍCIO MOSTRAR CÂMERA -->
+        <div id="camera-show">
+
+            <div class="col-sm-3"/>
+            <div class="col-sm-5 text-center">
+                 <span class="btn-file">
+                    SHOOT!<input onchange="photoTaken()" type="file" accept="image/*;capture=camera" id="cameraInput"
+                                 name="cameraInput"/>
+                </span>
+            </div>
+            <div class="col-sm-4"/>
+        </div>
+
+        <!-- INICIO TELA FINAL-->
+        <div id="final-screen">
+            <div class="row">
+                <div class="col-sm-1"/>
+                <div class="col-sm-5">
+                    <img src="" alt="hackerImage" id="final-screen-image"/>
+                </div>
+                <div class="col-sm-5 text-thankyou">
+                    <p id="thankyou"><b>MUITO OBRIGADO, HARD CODED</b></p>
+                    <p> Em breve divulgaremos o <br/> resultado no Twitter! </p>
+                </div>
+                <div class="col-sm-1"/>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2"/>
+                <div class="col-sm-8" >
+                    <form th:action="@{/save}" th:object="${hacker}" method="post">
+                        <input type="hidden" name="email" id="email" th:field="*{email}" />
+                        <input type="hidden" name="firstName" id="firstName" th:field="*{firstName}" />
+                        <input type="hidden" name="lastName" id="lastName" th:field="*{lastName}" />
+                        <input type="hidden" name="imageData" id="imageData" th:field="*{imageData}" />
+                        <div class="form-group text-center">
+                            <button class="confirm-button" type="submit">CONFIRMAR!</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-2"/>
+            </div>
+
+        </div>
+        <!-- FIM TELA FINAL-->
+
     </div>
-    <!-- FIM DO FORMULÁRIO DE INFORMAÇÕES -->
 
-    <!-- INÍCIO MOSTRAR CÂMERA -->
-    <div id="camera-show">
-        <span class="btn-file">
-            SHOOT!<input onchange="photoTaken()" type="file" accept="image/*;capture=camera" id="cameraInput" name="cameraInput"/>
-        </span>
-      <div class="col-sm-3"/>
-      <div class="col-sm-6" id="low-center">
-        <button class="confirm-button" id="take-picture">SHOOT!</button>
-      </div>
-      <div class="col-sm-3"/>
-    </div>
-    <!-- FIM MOSTRAR CÂMERA -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-    <!--&lt;!&ndash; INICIO MOSTRAR FOTOS &ndash;&gt;-->
-    <!--<div id="camera-picture">-->
-      <!--<canvas id="canvas"></canvas>-->
-      <!--<div class="col-sm-3"/>-->
-      <!--<div class="col-sm-6" id="low-center-confirm">-->
-        <!--<div id="buttons-pictures">-->
-          <!--<button class="cancel-button" id="restart-camera">TENTAR DE NOVO</button>-->
-          <!--<button class="ok-button" id="show-final-screen">SALVAR</button>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="col-sm-3"/>-->
-    <!--</div>-->
-    <!--&lt;!&ndash; FIM MOSTRAR FOTOS&ndash;&gt;-->
-
-    <!-- INICIO TELA FINAL-->
-    <div id="final-screen">
-      <img src="" alt="hackerImage" id="final-screen-image" />
-      <div class="col-sm-3"/>
-    </div>
-    <!-- FIM TELA FINAL-->
-
-</div>
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/validator.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/global.js"></script>
-<script src="js/button-control.js"></script>
+    <script src="js/validator.min.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/button-control.js"></script>
 
 </body>
+
 </html>
