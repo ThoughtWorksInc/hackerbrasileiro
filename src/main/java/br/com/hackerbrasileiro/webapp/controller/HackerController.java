@@ -25,6 +25,6 @@ public class HackerController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute Hacker hacker) throws Exception {
         hackers.save(hacker);
-        return "redirect:newhome";
+        return "redirect:home";
     }
 }
