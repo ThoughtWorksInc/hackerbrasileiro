@@ -33,7 +33,7 @@ public class HackerControllerTest {
     public void saveTest() throws Exception {
         String homeView = hackerController.save(getHacker());
 
-        assertThat(homeView, is("redirect:home"));
+        assertThat(homeView, is("redirect:/"));
     }
 
     private Hacker getHacker() {
