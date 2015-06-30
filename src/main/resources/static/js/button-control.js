@@ -21,6 +21,14 @@ function photoTaken() {
 
     	img.src = event.target.result;
 
+    	setHackersName();
+
+    	populateFinalForm(img);
+
+    }
+}
+
+function populateFinalForm(img){
         var firstName = $("#inputFirstName").val();
         var lastName = $("#inputLastName").val();
         var email = $("#inputEmail").val();
@@ -29,7 +37,12 @@ function photoTaken() {
         $("#lastName").val(lastName);
         $("#email").val(email);
         $("#imageData").val(getBase64Image(img));
-    }
+}
+
+
+function setHackersName(){
+    var name = $("#inputFirstName").val().toUpperCase();
+    $("#thankyou").text("MUITO OBRIGADO, "+name+"!");
 }
 
 function getBase64Image(img) {
@@ -37,6 +50,7 @@ function getBase64Image(img) {
   canvas.width = img.width;
   canvas.height = img.height;
   var ctx = canvas.getContext("2d");
+
   ctx.drawImage(img, 0, 0);
   return canvas.toDataURL("image/png");
 }
