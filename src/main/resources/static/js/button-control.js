@@ -7,21 +7,12 @@ function showFormPage() {
     elementToBeShown.style.display = 'block';
 }
 
-function showCameraPage() {
-    var elementToBeHidden = document.getElementById("formulario-informacoes");
-    elementToBeHidden.style.display = 'none';
-
-    var elementToBeShown = document.getElementById("camera-show");
-    elementToBeShown.style.display = 'block';
-}
-
 function photoTaken() {
+
     var img = document.getElementById("final-screen-image");
     var fReader = new FileReader();
     fReader.readAsDataURL(document.getElementById("cameraInput").files[0]);
     fReader.onloadend = function(event) {
-        var elementToBeShown = document.getElementById("camera-show");
-        elementToBeShown.style.display = 'none';
         var elementToBeShown = document.getElementById("formulario-informacoes");
                 elementToBeShown.style.display = 'none';
 

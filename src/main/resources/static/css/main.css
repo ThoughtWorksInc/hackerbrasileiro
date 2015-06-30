@@ -11,10 +11,6 @@ label {
   display:none;
 }
 
-#camera-show {
-  display: none;
-}
-
 #camera-picture {
   display: none;
 }
@@ -185,6 +181,10 @@ input[type=checkbox] {
   height: 30px;
 }
 
+#cameraInput{
+    display:none;
+}
+
 .btn-file {
     position: relative;
     display: block;
@@ -197,6 +197,7 @@ input[type=checkbox] {
     height: 70px;
     text-align: center;
     line-height:70px;
+    margin-left:20%;
 
 }
 
