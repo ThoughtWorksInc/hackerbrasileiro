@@ -1,63 +1,162 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title>ThoughtWorks - FISL</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-	
-	<link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet"/>
-    <link href="css/global.css" rel="stylesheet"/>
-	</head>
-<body>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12" id="panelHolder">
-				<!-- Settings -->
-				<div class="panel panel-default" id="panelSettings">
-	  				<div class="panel-body">
-						<form action="#" th:action="@{/save}" th:object="${hacker}" method="post">
-							<div class="row">
-								<div class="col-md-4">
-									<div class="form-group">
-										<label for="email">Email address</label>
-										<input type="email" class="form-control super-input" id="email" name="email" placeholder="Your email" th:field="*{email}" required="required"/>
-									</div>
-									<div class="form-group">
-										<label for="firstName">First Name</label>
-										<input type="text" class="form-control super-input" id="firstName" name="firstName" placeholder="Your first name" th:field="*{firstName}" required="required"/>
-									</div>
-									<div class="form-group">
-										<label for="lastName">Last Name</label>
-										<input type="text" class="form-control super-input" id="lastName" placeholder="Your last name" th:field="*{lastName}" required="required"/>
-									</div>
-								</div>
-								<div class="col-md-8">
-									<!-- Photos -->
-									<video id="video" width="640" height="480" autoplay="autoplay"></video>
-									<canvas id="canvas" class="hide" width="500" height="480"></canvas>
-									<input type="hidden" class="form-control super-input" id="imageData" th:field="*{imageData}"/>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<div class="text-right">
-										<button type="submit" class="btn btn-primary super-button" id="btnSnap">Snap</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-	</div>
-</div>
+<head th:replace="fragments/head"></head>
 
-<script src="js/jquery-2.1.4.min.js"></script>
-<script src="js/jquery.validate.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/global.js"></script>
+<body scroll="no">
 
+    <div class="container-fluid">
+
+        <header th:replace="fragments/header"></header>
+
+        <!-- TELA INICIAL -->
+        <div id="tela-inicial">
+            <div class="row">
+                <div class="col-sm-1"/>
+                <div class="col-sm-10">
+                    <p id="legal">
+                        Confirmo que sou maior de 18 (dezoito) anos e autorizo que a ThoughtWorks utilize minha imagem,
+                        coletada durante minha da participação no FISL 2015, estando autorizada a publicação em meios
+                        impressos
+                        ou digitais, a exclusivo critério da ThoughtWorks.
+                    </p>
+                </div>
+                <div class="col-sm-1"/>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2"/>
+                <div class="col-sm-8">
+                    <form id="agreementForm">
+                        <div class="form-group text-center">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="agreementCheckbox"
+                                           data-error="Você precisa aceitar os termos para continuar." required="required"/>
+                                    Li e concordo com os termos mencionados.
+                                </label>
+
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <button class="confirm-button" type="submit">COMEÇAR!</button>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="col-sm-2"/>
+            </div>
+        </div>
+
+        <!-- FIM DA TELA INICIAL -->
+
+        <!-- INÍCIO DO FORMULARIO DE INFORMAÇÕES -->
+        <div id="formulario-informacoes">
+            <div class="row">
+                <form data-toggle="validator" id="hackerInfo">
+                    <div class="col-sm-1"/>
+                    <div class="col-sm-10">
+
+                        <div class="form-group">
+                            <label for="inputFirstName" class="text">Qual seu primeiro nome?</label>
+                            <input id="inputFirstName" type="text" class="input-data" placeholder="Informe seu nome"
+                                   required="required"
+                                   data-error="Por favor, insira o seu nome"/>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputLastName" class="text">Qual seu sobrenome?</label>
+                            <input id="inputLastName" type="text" class="input-data" placeholder="Informe seu sobrenome"
+                                   required="required"
+                                   data-error="Por favor, insira o seu sobrenome"/>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail" class="text">Qual seu email?</label>
+                            <input id="inputEmail" type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                   class="input-data" placeholder="Informe seu sobrenome" required="required"
+                                   data-error="Por favor, insira um email válido"/>
+
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <!--<div class="form-group text-center">-->
+                            <!--<button class="confirm-button" type="submit">PROSSEGUIR</button>-->
+                        <!--</div>-->
+                        <div id="camera-show">
+                            <div class="col-sm-3"/>
+                            <div class="col-sm-5 text-center">
+                                 <span class="btn-file">
+                                    SHOOT!<input onchange="photoTaken()" type="file" accept="image/*;capture=camera" id="cameraInput"
+                                                 name="cameraInput"/>
+                                </span>
+                            </div>
+                            <div class="col-sm-4"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"/>
+                </form>
+            </div>
+        </div>
+        <!-- FIM DO FORMULÁRIO DE INFORMAÇÕES -->
+
+        <!-- INÍCIO MOSTRAR CÂMERA -->
+        <!--<div id="camera-show">-->
+
+            <!--<div class="col-sm-3"/>-->
+            <!--<div class="col-sm-5 text-center">-->
+                 <!--<span class="btn-file">-->
+                    <!--SHOOT!<input onchange="photoTaken()" type="file" accept="image/*;capture=camera" id="cameraInput"-->
+                                 <!--name="cameraInput"/>-->
+                <!--</span>-->
+            <!--</div>-->
+            <!--<div class="col-sm-4"/>-->
+        <!--</div>-->
+
+        <!-- INICIO TELA FINAL-->
+        <div id="final-screen">
+            <div class="row">
+                <div class="col-sm-1"/>
+                <div class="col-sm-5">
+                    <img src="" alt="hackerImage" id="final-screen-image"/>
+                </div>
+                <div class="col-sm-5 text-thankyou">
+                    <p id="thankyou"><b>MUITO OBRIGADO, HARD CODED</b></p>
+                    <p> Em breve divulgaremos o <br/> resultado no Twitter! </p>
+                </div>
+                <div class="col-sm-1"/>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2"/>
+                <div class="col-sm-8" >
+                    <form action="#" th:action="@{/save}" th:object="${hacker}" method="post">
+                        <input type="hidden" name="email" id="email" th:field="*{email}" />
+                        <input type="hidden" name="firstName" id="firstName" th:field="*{firstName}" />
+                        <input type="hidden" name="lastName" id="lastName" th:field="*{lastName}" />
+                        <input type="hidden" name="imageData" id="imageData" th:field="*{imageData}" />
+                        <div class="form-group text-center">
+                            <button class="confirm-button" type="submit">CONFIRMAR!</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-2"/>
+            </div>
+
+        </div>
+        <!-- FIM TELA FINAL-->
+
+    </div>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/validator.min.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/button-control.js"></script>
 
 </body>
+
 </html>
