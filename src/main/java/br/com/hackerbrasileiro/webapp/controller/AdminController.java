@@ -33,22 +33,24 @@ public class AdminController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView createAdminView() throws IOException {
-        Integer numberOfPhotos = photos.countNumberOfFilesInFolder("photos");
+        Integer numberOfPhotos = photos.countNumberOfFilesInFolder(Photos.getPhotosPath());
         return new ModelAndView("admin", "adminModel", new AdminRepresentation(numberOfPhotos));
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.POST, produces = "image/png")
     public @ResponseBody byte[] runScript() throws IOException, InterruptedException {
-        PythonScript pythonScript = new PythonScript("facemorpher/generate.py", "python");
+        String script = PythonScript.getScriptPath().concat("/generate.py");
+        PythonScript pythonScript = new PythonScript(script, "python");
         pythonScript.execute();
 
-        return photos.getImageAsByteArray("facemorpher/result.png");
+        String facemorpherResult = PythonScript.getScriptPath().concat("/result.png");
+        return photos.getImageAsByteArray(facemorpherResult);
     }
 
     @RequestMapping(value = "/admin/email", method = RequestMethod.POST)
     public ModelAndView getRandomEmail() throws IOException {
         Hacker hacker = randomHacker.getRandomHacker();
-        Integer numberOfPhotos = photos.countNumberOfFilesInFolder("photos");
+        Integer numberOfPhotos = photos.countNumberOfFilesInFolder(Photos.getPhotosPath());
 
         return new ModelAndView("admin", "adminModel", new AdminRepresentation(numberOfPhotos, hacker.getFullName(), hacker.getEmail()));
     }

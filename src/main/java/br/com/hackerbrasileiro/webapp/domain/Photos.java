@@ -14,7 +14,7 @@ import java.util.UUID;
 @Component
 public class Photos {
 
-    private static final String FOLDER_NAME = "photos/";
+    private static final String FOLDER_NAME_VARIABLE = "HACKERBRASILEIRO_PHOTO_PATH";
     private static final String FILE_NAME_EXTENSION = ".png";
     private static final String DATA_TYPE_INFO = "data:image/jpeg;base64,";
     private static final String READ_MODE = "r";
@@ -44,6 +44,10 @@ public class Photos {
         }
     }
 
+    public static String getPhotosPath() {
+        return System.getenv().get(FOLDER_NAME_VARIABLE);
+    }
+
     private byte[] convertToByteArray(String text) {
         return Base64.decodeBase64(text);
     }
@@ -57,7 +61,8 @@ public class Photos {
     }
 
     private String getFilePath(String fileName) {
-        FileValidator.createFolderIfDoesNotExistsFor(FOLDER_NAME);
-        return String.format("%s%s%s", FOLDER_NAME, fileName, FILE_NAME_EXTENSION);
+        String folderName = getPhotosPath().concat("/");
+        FileValidator.createFolderIfDoesNotExistsFor(folderName);
+        return String.format("%s%s%s", folderName, fileName, FILE_NAME_EXTENSION);
     }
 }

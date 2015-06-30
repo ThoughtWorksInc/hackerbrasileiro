@@ -10,9 +10,9 @@ Open your bashrc file (or zshrc or other shell that you are using) with a editor
 export HACKERBRASILEIRO_PORT=<port_number>
 export HACKERBRASILEIRO_PHOTO_PATH="<photo_path>"
 export HACKERBRASILEIRO_FILE_PATH="<file_path>"
+export HACKERBRASILEIRO_FACEMORPHER_PATH="<facemorpher_path>"
 export HACKERBRASILEIRO_USERNAME="<username>"
 export HACKERBRASILEIRO_PASSWORD="<password>"
-export HACKERBRASILEIRO_ROLE="<role>"
 ```
 
 After save the file, it is necessary update your shell, for example:
@@ -23,3 +23,11 @@ $ source ~/.bashrc
 ```
 $ source ~/.zshrc
 ```
+
+## Run application
+
+```
+$ ./gradlew bootRun
+```
+
+

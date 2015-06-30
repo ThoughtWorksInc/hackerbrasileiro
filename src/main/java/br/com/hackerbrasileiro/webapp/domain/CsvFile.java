@@ -7,7 +7,7 @@ public interface CsvFile {
 
     static final String FILE_NAME = "hackers_%s.csv";
     static final String NEW_LINE = "\n";
-    static final String PATH = "src/main/resources/files/";
+    static final String FILE_PATH_VARIABLE = "HACKERBRASILEIRO_FILE_PATH";
 
     String formatLine(Hacker hacker, String UUID);
 
@@ -16,4 +16,6 @@ public interface CsvFile {
     String getName();
 
     List<Hacker> getHackersDaily() throws IOException;
+
+    String getFilePath();
 }

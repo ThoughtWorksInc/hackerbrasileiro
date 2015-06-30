@@ -24,4 +24,8 @@ public class PythonScript {
         command[1] = script;
         return command;
     }
+
+    public static String getScriptPath() {
+        return System.getenv().get("HACKERBRASILEIRO_FACEMORPHER_PATH");
+    }
 }
