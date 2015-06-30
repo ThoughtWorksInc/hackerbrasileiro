@@ -36,23 +36,13 @@ function populateFinalForm(img){
         $("#firstName").val(firstName);
         $("#lastName").val(lastName);
         $("#email").val(email);
-        $("#imageData").val(getBase64Image(img));
+        $("#imageData").val(img.src);
 }
 
 
 function setHackersName(){
     var name = $("#inputFirstName").val().toUpperCase();
     $("#thankyou").text("MUITO OBRIGADO, "+name+"!");
-}
-
-function getBase64Image(img) {
-  var canvas = document.createElement("canvas");
-  canvas.width = img.width;
-  canvas.height = img.height;
-  var ctx = canvas.getContext("2d");
-
-  ctx.drawImage(img, 0, 0);
-  return canvas.toDataURL("image/png");
 }
 
 function reduceHeaderSize(){

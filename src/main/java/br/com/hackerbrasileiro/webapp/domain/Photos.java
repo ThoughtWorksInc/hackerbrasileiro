@@ -16,7 +16,7 @@ public class Photos {
 
     private static final String FOLDER_NAME = "photos/";
     private static final String FILE_NAME_EXTENSION = ".png";
-    private static final String DATA_TYPE_INFO = "data:image/png;base64,";
+    private static final String DATA_TYPE_INFO = "data:image/jpeg;base64,";
     private static final String READ_MODE = "r";
 
     public String save(String base64Image) throws IOException {
