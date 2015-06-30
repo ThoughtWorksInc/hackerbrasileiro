@@ -14,10 +14,5 @@ public class HomeController {
     public ModelAndView createHome(Model model) {
         return new ModelAndView("home", "hacker", new Hacker());
     }
-
-    @RequestMapping(value = "/oldhome", method = RequestMethod.GET)
-    public ModelAndView createOldHome(Model model) {
-        return new ModelAndView("oldhome", "hacker", new Hacker());
-    }
 }
 
