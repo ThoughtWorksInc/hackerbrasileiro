@@ -4,7 +4,7 @@
 
 ### Set up environment variables
 
-Open your bashrc with a editor text and insert the code below:
+Open your bashrc file (or zshrc or other shell that you are using) with a editor text and insert the code below:
 
 ```
 export HACKERBRASILEIRO_PORT=<port_number>
@@ -15,7 +15,11 @@ export HACKERBRASILEIRO_PASSWORD="<password>"
 export HACKERBRASILEIRO_ROLE="<role>"
 ```
 
-After save bashrc file, it is necessary update your bashrc.
+After save the file, it is necessary update your shell, for example:
 ```
 $ source ~/.bashrc
+```
+
+```
+$ source ~/.zshrc
 ```
