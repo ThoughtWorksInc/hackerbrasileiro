@@ -27,3 +27,7 @@ sudo pip install scipy --upgrade
 sudo wget https://github.com/alyssaq/face_morpher/raw/binaries/ubuntu/stasm_util
 sudo cp stasm_util /usr/local/lib/python2.7/dist-packages/facemorpher/bin/stasm_util
 sudo rm -rf stasm_util
+
+#Create app and service folders
+mkidr app
+mkidr service

@@ -15,4 +15,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, :path => "infrastructure/scripts/local/git.sh"
   config.vm.provision :shell, :path => "infrastructure/scripts/local/openjdk.sh"
   config.vm.provision :shell, :path => "infrastructure/scripts/local/facemorpher.sh"
+  config.vm.provision :shell, :path => "infrastructure/scripts/local/app.sh"
 end
