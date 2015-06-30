@@ -15,4 +15,3 @@ public class HomeController {
         return new ModelAndView("home", "hacker", new Hacker());
     }
 }
-
