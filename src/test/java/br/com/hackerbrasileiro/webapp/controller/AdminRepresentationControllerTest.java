@@ -3,6 +3,7 @@ package br.com.hackerbrasileiro.webapp.controller;
 import br.com.hackerbrasileiro.webapp.domain.Photos;
 import br.com.hackerbrasileiro.webapp.domain.RandomHacker;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,7 +37,7 @@ public class AdminRepresentationControllerTest {
         assertThat(adminView.getViewName(), is("admin"));
     }
 
-    @Test
+    @Test @Ignore
     public void runScriptTest() throws Exception {
         byte[] result = adminController.runScript();
         assertThat(result.length > 0, is(true));
