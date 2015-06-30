@@ -2,12 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head"> </head>
 <body>
-    <header th:replace="fragments/header"></header>
-    <!-- <p th:text="'Url: ' + ${error.url}" />
-    <p th:text="'Exception message: ' + ${error.exception.message}" />
+    <div class="container-fluid">
+        <header th:replace="fragments/header"></header>
 
-    <div th:each="ste : ${error.exception.stackTrace}">
-        <span th:text="${ste}"></span>
-    </div> -->
+
+        <div class="row">
+            <div class="col-sm-1"/>
+            <div class="col-sm-10">
+                <p th:text="'Url: ' + ${error.url}" />
+                <p th:text="'Exception message: ' + ${error.exception.message}" />
+            </div>
+            <div class="col-sm-1"/>
+        </div>
+
+    </div>
 </body>
 </html>

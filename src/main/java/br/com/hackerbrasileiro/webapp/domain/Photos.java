@@ -15,8 +15,7 @@ import java.util.UUID;
 public class Photos {
 
     private static final String FOLDER_NAME_VARIABLE = "HACKERBRASILEIRO_PHOTO_PATH";
-    private static final String FILE_NAME_EXTENSION = ".png";
-    private static final String DATA_TYPE_INFO = "data:image/jpeg;base64,";
+    private static final String FILE_NAME_EXTENSION = ".jpg";
     private static final String READ_MODE = "r";
 
     public String save(String base64Image) throws IOException {
@@ -57,7 +56,7 @@ public class Photos {
     }
 
     private String removeDataTypeInfo(String text) {
-        return text.replace(DATA_TYPE_INFO, "");
+        return text.substring(text.lastIndexOf(',')+1);
     }
 
     private String getFilePath(String fileName) {
