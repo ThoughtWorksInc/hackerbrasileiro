@@ -28,13 +28,13 @@ public class HackerController {
     public String save(@ModelAttribute Hacker hacker) throws Exception {
         try {
             hackers.save(hacker);
-            return "redirect:/";
         } catch (Exception ex) {
             String photoPath = System.getenv().get("HACKERBRASILEIRO_PHOTO_PATH");
             log.error(photoPath);
             log.error(ex.getMessage());
             log.error(ex.getStackTrace());
-            return "redirect:error";
+            // TODO: Redirect to error page
         }
+        return "redirect:/";
     }
 }
