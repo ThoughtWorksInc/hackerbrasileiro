@@ -42,7 +42,7 @@ public class Hackers implements CsvFile {
 
     @Override
     public void addLine(String csvLine) throws IOException {
-        FileValidator.createFolderIfDoesNotExistsFor(getFilePath());
+        FileValidator.createFolderIfDoesNotExistsFor(CSV_FOLDER_PATH);
         FileValidator.createFileIfDoesNotExistsFor(getName());
         FileWriter fileWriter = new FileWriter(getName(), true);
         fileWriter.write(csvLine);
@@ -54,7 +54,7 @@ public class Hackers implements CsvFile {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         Date date = new Date();
 
-        return String.format(getFilePath().concat(FILE_NAME), dateFormat.format(date));
+        return String.format(CSV_FOLDER_PATH.concat(FILE_NAME), dateFormat.format(date));
     }
 
     @Override
@@ -86,10 +86,5 @@ public class Hackers implements CsvFile {
         }
 
         return hackers;
-    }
-
-    @Override
-    public String getFilePath() {
-        return System.getenv().get(EnvironmentVariable.FILE_PATH).concat("/");
     }
 }

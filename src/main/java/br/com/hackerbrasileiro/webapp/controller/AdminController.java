@@ -1,10 +1,10 @@
 package br.com.hackerbrasileiro.webapp.controller;
 
+import br.com.hackerbrasileiro.webapp.controller.representation.AdminRepresentation;
 import br.com.hackerbrasileiro.webapp.domain.Hacker;
 import br.com.hackerbrasileiro.webapp.domain.Photos;
 import br.com.hackerbrasileiro.webapp.domain.PythonScript;
 import br.com.hackerbrasileiro.webapp.domain.RandomHacker;
-import br.com.hackerbrasileiro.webapp.controller.representation.AdminRepresentation;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +58,7 @@ public class AdminController {
             return null;
         }
     }
+
 
     @RequestMapping(value = "/admin/email", method = RequestMethod.POST)
     public ModelAndView getRandomEmail(Model model) throws IOException {
