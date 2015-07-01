@@ -31,8 +31,7 @@ public class HackerController {
         } catch (Exception ex) {
             String photoPath = System.getenv().get("HACKERBRASILEIRO_PHOTO_PATH");
             log.error(photoPath);
-            log.error(ex.getMessage());
-            log.error(ex.getStackTrace());
+            log.error("exception", ex);
             // TODO: Redirect to error page
         }
         return "redirect:/";
