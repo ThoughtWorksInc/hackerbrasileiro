@@ -24,7 +24,7 @@ public class RandomHacker {
     public Hacker getRandomHacker() throws IOException {
         List<Hacker> hackers = this.hackers.getHackersDaily();
         if (hackers == null || hackers.isEmpty())
-            return null;
+            return new Hacker();
 
         Random randomNumber = new Random();
         int hackerIndex = randomNumber.nextInt(hackers.size());

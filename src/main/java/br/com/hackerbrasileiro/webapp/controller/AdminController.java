@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -59,10 +60,14 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/email", method = RequestMethod.POST)
-    public ModelAndView getRandomEmail() throws IOException {
+    public ModelAndView getRandomEmail(Model model) throws IOException {
         try {
             Hacker hacker = randomHacker.getRandomHacker();
             Integer numberOfPhotos = photos.countNumberOfFilesInFolder(Photos.getPhotosPath());
+
+            if(hacker.getEmail() == null || hacker.getEmail().isEmpty()) {
+                model.addAttribute("messageNoHackers", "Desculpe, não há hackers para sortear no momento");
+            }
 
             return new ModelAndView("admin", "adminModel", new AdminRepresentation(numberOfPhotos, hacker.getFullName(), hacker.getEmail()));
         } catch (Exception ex) {

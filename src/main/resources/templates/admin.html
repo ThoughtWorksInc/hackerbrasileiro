@@ -25,13 +25,12 @@
                     <div th:if="${adminModel.email} != null">
                         A pessoa sorteada é: <span th:text="${adminModel.name}"/> (<span th:text="${adminModel.email}"/>).
                     </div>
-
+                    <div th:text="${messageNoHackers}" />
                     <button class="btn btn-primary">Sortear email</button>
                 </form>
             </div>
             <div class="col-sm-1"></div>
         </div>
-
     </div>
 </body>
 </html>

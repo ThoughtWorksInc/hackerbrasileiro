@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.io.File;
 
 import static lombok.AccessLevel.PRIVATE;
 
@@ -58,26 +59,30 @@ public class Hackers implements CsvFile {
 
     @Override
     public List<Hacker> getHackersDaily() throws IOException {
-        BufferedReader csvFile = new BufferedReader(new FileReader(getName()));
         List<Hacker> hackers = new ArrayList<>();
+        File file = new File(getName());
 
-        try {
-            String line = csvFile.readLine();
+        if(file.exists()){
+          BufferedReader csvFile = new BufferedReader(new FileReader(getName()));
 
-            while (line != null) {
-                Hacker hacker = new Hacker();
-                String[] info = line.split(",");
+          try {
+              String line = csvFile.readLine();
 
-                hacker.setFirstName(info[0].trim());
-                hacker.setLastName(info[1].trim());
-                hacker.setEmail(info[2].trim());
+              while (line != null) {
+                  Hacker hacker = new Hacker();
+                  String[] info = line.split(",");
 
-                hackers.add(hacker);
+                  hacker.setFirstName(info[0].trim());
+                  hacker.setLastName(info[1].trim());
+                  hacker.setEmail(info[2].trim());
 
-                line = csvFile.readLine();
-            }
-        } finally {
-            csvFile.close();
+                  hackers.add(hacker);
+
+                  line = csvFile.readLine();
+              }
+          } finally {
+              csvFile.close();
+          }
         }
 
         return hackers;
