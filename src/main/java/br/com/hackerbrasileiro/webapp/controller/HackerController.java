@@ -3,6 +3,7 @@ package br.com.hackerbrasileiro.webapp.controller;
 import br.com.hackerbrasileiro.webapp.domain.Hacker;
 import br.com.hackerbrasileiro.webapp.domain.Hackers;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import static lombok.AccessLevel.PRIVATE;
 
+@Log4j
 @Controller
 @FieldDefaults(level = PRIVATE)
 public class HackerController {
@@ -24,7 +26,15 @@ public class HackerController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute Hacker hacker) throws Exception {
-        hackers.save(hacker);
-        return "redirect:/";
+        try {
+            hackers.save(hacker);
+            return "redirect:/";
+        } catch (Exception ex) {
+            String photoPath = System.getenv().get("HACKERBRASILEIRO_PHOTO_PATH");
+            log.error(photoPath);
+            log.error(ex.getMessage());
+            log.error(ex.getStackTrace());
+            return "redirect:error";
+        }
     }
 }
