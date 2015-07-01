@@ -1,8 +1,11 @@
 package br.com.hackerbrasileiro.webapp.domain.validator;
 
+import org.springframework.stereotype.Component;
+
 import java.io.File;
 import java.io.IOException;
 
+@Component
 public class FileManager {
 
 
