@@ -24,6 +24,7 @@ facemorpher/result.png
 *.csv
 
 .vagrant/
+hackerbrasileiro.log
 
 .DS_Store
 src/main/java/.DS_Store

@@ -1,5 +1,6 @@
 package br.com.hackerbrasileiro.webapp.domain;
 
+import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
@@ -26,6 +27,6 @@ public class PythonScript {
     }
 
     public static String getScriptPath() {
-        return System.getenv().get("HACKERBRASILEIRO_FACEMORPHER_PATH");
+        return System.getenv().get(EnvironmentVariable.FACEMORPHER_PATH);
     }
 }

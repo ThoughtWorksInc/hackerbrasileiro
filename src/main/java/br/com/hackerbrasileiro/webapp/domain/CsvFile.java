@@ -7,7 +7,6 @@ public interface CsvFile {
 
     static final String FILE_NAME = "hackers_%s.csv";
     static final String NEW_LINE = "\n";
-    static final String FILE_PATH_VARIABLE = "HACKERBRASILEIRO_FILE_PATH";
 
     String formatLine(Hacker hacker, String UUID);
 

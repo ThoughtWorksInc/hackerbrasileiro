@@ -15,6 +15,8 @@ case $1 in
     start)
         echo "Starting hackerbrasileiro..."
         if [ ! -f /home/ubuntu/app/pid ]; then
+            echo "Loading environment variables"
+            . /home/ubuntu/.profile
             nohup java -Dserver.port=5000 -jar /home/ubuntu/app/hackerbrasileiro.jar /home/ubuntu/app 2>> /home/ubuntu/app/logs.txt >> /home/ubuntu/app/logs.txt &
             echo $! > /home/ubuntu/app/pid
             echo "hackerbrasileiro started ..."
@@ -42,6 +44,8 @@ case $1 in
             rm /home/ubuntu/app/pid
 
             echo "Starting hackerbrasileiro..."
+            echo "Loading environment variables"
+            . /home/ubuntu/.profile
             nohup java -Dserver.port=5000 -jar /home/ubuntu/app/hackerbrasileiro.jar /home/ubuntu/app 2>> /home/ubuntu/app/logs.txt >> /home/ubuntu/app/logs.txt &
             echo $! > /home/ubuntu/app/pid
             echo "hackerbrasileiro started ..."

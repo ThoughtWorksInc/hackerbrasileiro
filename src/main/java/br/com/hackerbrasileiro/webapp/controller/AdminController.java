@@ -18,6 +18,7 @@ import java.io.IOException;
 
 import static lombok.AccessLevel.PRIVATE;
 
+@Log4j
 @Controller
 @FieldDefaults(level = PRIVATE)
 public class AdminController {
@@ -33,25 +34,40 @@ public class AdminController {
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView createAdminView() throws IOException {
-        Integer numberOfPhotos = photos.countNumberOfFilesInFolder(Photos.getPhotosPath());
-        return new ModelAndView("admin", "adminModel", new AdminRepresentation(numberOfPhotos));
+        try {
+            Integer numberOfPhotos = photos.countNumberOfFilesInFolder(Photos.getPhotosPath());
+            return new ModelAndView("admin", "adminModel", new AdminRepresentation(numberOfPhotos));
+        } catch (Exception ex) {
+            log.error("Admin Controller - error getting number of files in folder: ", ex);
+            return new ModelAndView("error");
+        }
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.POST, produces = "image/png")
     public @ResponseBody byte[] runScript() throws IOException, InterruptedException {
-        String script = PythonScript.getScriptPath().concat("/generate.py");
-        PythonScript pythonScript = new PythonScript(script, "python");
-        pythonScript.execute();
+        try {
+            String script = PythonScript.getScriptPath().concat("/generate.py");
+            PythonScript pythonScript = new PythonScript(script, "python");
+            pythonScript.execute();
 
-        String facemorpherResult = PythonScript.getScriptPath().concat("/result.png");
-        return photos.getImageAsByteArray(facemorpherResult);
+            String facemorpherResult = PythonScript.getScriptPath().concat("/result.png");
+            return photos.getImageAsByteArray(facemorpherResult);
+        } catch (Exception ex) {
+            log.error("Admin Controller - error running facemorpher: ", ex);
+            return null;
+        }
     }
 
     @RequestMapping(value = "/admin/email", method = RequestMethod.POST)
     public ModelAndView getRandomEmail() throws IOException {
-        Hacker hacker = randomHacker.getRandomHacker();
-        Integer numberOfPhotos = photos.countNumberOfFilesInFolder(Photos.getPhotosPath());
+        try {
+            Hacker hacker = randomHacker.getRandomHacker();
+            Integer numberOfPhotos = photos.countNumberOfFilesInFolder(Photos.getPhotosPath());
 
-        return new ModelAndView("admin", "adminModel", new AdminRepresentation(numberOfPhotos, hacker.getFullName(), hacker.getEmail()));
+            return new ModelAndView("admin", "adminModel", new AdminRepresentation(numberOfPhotos, hacker.getFullName(), hacker.getEmail()));
+        } catch (Exception ex) {
+            log.error("Admin Controller - error getting random email: ", ex);
+            return new ModelAndView("error");
+        }
     }
 }

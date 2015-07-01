@@ -27,14 +27,11 @@ public class HackerController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute Hacker hacker) throws Exception {
         try {
-            hackers.save(hacker);
+            hackers.save(null);
+            return "redirect:/";
         } catch (Exception ex) {
-            String photoPath = System.getenv("HACKERBRASILEIRO_PHOTO_PATH");
-            log.error(photoPath);
-
-            log.error("exception", ex);
-            // TODO: Redirect to error page
+            log.error("Hacker Controller - error saving the hacker: ", ex);
+            return  "redirect:error";
         }
-        return "redirect:/";
     }
 }

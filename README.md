@@ -13,6 +13,7 @@ export HACKERBRASILEIRO_FILE_PATH="<file_path>"
 export HACKERBRASILEIRO_FACEMORPHER_PATH="<facemorpher_path>"
 export HACKERBRASILEIRO_USERNAME="<username>"
 export HACKERBRASILEIRO_PASSWORD="<password>"
+export HACKERBRASILEIRO_LOG_PATH="<log_path>"
 ```
 
 After save the file, it is necessary update your shell, for example:
@@ -29,7 +30,5 @@ $ source ~/.zshrc
 ```
 $ ./gradlew bootRun
 ```
-
-
 
 

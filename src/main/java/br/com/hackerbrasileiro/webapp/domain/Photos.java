@@ -2,6 +2,7 @@ package br.com.hackerbrasileiro.webapp.domain;
 
 
 import br.com.hackerbrasileiro.webapp.domain.validator.FileValidator;
+import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,6 @@ import java.util.UUID;
 @Component
 public class Photos {
 
-    private static final String FOLDER_NAME_VARIABLE = "HACKERBRASILEIRO_PHOTO_PATH";
     private static final String FILE_NAME_EXTENSION = ".jpg";
     private static final String READ_MODE = "r";
 
@@ -44,7 +44,7 @@ public class Photos {
     }
 
     public static String getPhotosPath() {
-        return System.getenv().get(FOLDER_NAME_VARIABLE);
+        return System.getenv().get(EnvironmentVariable.PHOTO_PATH);
     }
 
     private byte[] convertToByteArray(String text) {

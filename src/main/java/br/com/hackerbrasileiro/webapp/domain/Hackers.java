@@ -1,6 +1,7 @@
 package br.com.hackerbrasileiro.webapp.domain;
 
 import br.com.hackerbrasileiro.webapp.domain.validator.FileValidator;
+import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -84,6 +85,6 @@ public class Hackers implements CsvFile {
 
     @Override
     public String getFilePath() {
-        return System.getenv().get(FILE_PATH_VARIABLE).concat("/");
+        return System.getenv().get(EnvironmentVariable.FILE_PATH).concat("/");
     }
 }

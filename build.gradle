@@ -22,7 +22,7 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-//    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-security")
     compile('org.projectlombok:lombok:1.16.4')
     testCompile("junit:junit")
     testCompile("org.mockito:mockito-all:1.8.4")
