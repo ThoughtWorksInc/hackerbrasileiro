@@ -29,11 +29,9 @@ public class HackerController {
         try {
             hackers.save(hacker);
         } catch (Exception ex) {
-            for (String envName : System.getenv().keySet()) {
-                log.error(envName);
-                log.error(System.getenv().get(envName));
-            }
-            
+            String photoPath = System.getenv("HACKERBRASILEIRO_PHOTO_PATH");
+            log.error(photoPath);
+
             log.error("exception", ex);
             // TODO: Redirect to error page
         }
