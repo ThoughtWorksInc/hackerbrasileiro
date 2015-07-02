@@ -8,9 +8,6 @@ import java.io.IOException;
 @Component
 public class FileManager {
 
-
-    private int fileLength;
-
     public void deleteFile(String filePath) {
         File file = new File(filePath);
         if (file.exists()) {

@@ -28,7 +28,7 @@ public class DownloadHackersListController {
     }
     private String filePathResult = CsvFile.CSV_FOLDER_PATH.concat("/hackers.csv");
 
-    public void doDownload(HttpServletRequest request, HttpServletResponse response) throws Exception{
+    public void downloadHackers(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
         File fileSaved = fileManager.createFile(filePathResult);
 
