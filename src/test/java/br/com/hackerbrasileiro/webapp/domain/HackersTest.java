@@ -2,7 +2,6 @@ package br.com.hackerbrasileiro.webapp.domain;
 
 import br.com.hackerbrasileiro.webapp.util.FileHelper;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 
@@ -32,7 +31,6 @@ public class HackersTest {
         hackers = new Hackers(photos, fileHelper);
     }
 
-    @Ignore
     @Test
     public void saveHackerTest() throws Exception {
         Hacker hacker = getHacker();
