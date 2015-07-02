@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 
 import java.io.File;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -43,4 +44,42 @@ public class FileManagerTest {
         StreamInfo streamInfo = fileManager.getStreamInfo("src/test/resources/result.png");
         assertNotNull(streamInfo);
     }
+
+    @Test
+    public void shouldReturnEmptyListIfThereIsNoHackerFiles() throws Exception {
+        FileManager fileManager =  new FileManager();
+        List<File>  hackers = fileManager.getAllFilesFromFolder("src/test/resources/emptyfolder");
+        assertTrue(hackers.isEmpty());
+    }
+
+    @Test
+    public void shouldReturnAllHackerFiles() throws Exception {
+        FileManager fileManager =  new FileManager();
+        List<File>  hackers = fileManager.getAllFilesFromFolder("src/test/resources");
+        assertFalse(hackers.isEmpty());
+    }
+
+    @Test
+    public void fileListShouldNotContainFolders() throws Exception {
+        FileManager fileManager =  new FileManager();
+        List<File>  hackers = fileManager.getAllFilesFromFolder("src/test/resources");
+
+        for (File file : hackers) {
+            assertTrue(file.isFile());
+        }
+
+    }
+
+    @Test
+    public void shouldOnlyReturnCSVFiles() throws Exception {
+        FileManager fileManager =  new FileManager();
+        List<File>  hackers = fileManager.getAllFilesFromFolder("src/test/resources");
+
+        for (File file : hackers) {
+           assertTrue(file.getName().endsWith(".csv"));
+        }
+
+    }
+
+
 }

@@ -2,6 +2,7 @@ package br.com.hackerbrasileiro.webapp.controller;
 
 import br.com.hackerbrasileiro.webapp.util.FileManager;
 import br.com.hackerbrasileiro.webapp.util.StreamInfo;
+import br.com.hackerbrasileiro.webapp.domain.AllHackers;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.apache.catalina.ssi.ByteArrayServletOutputStream;
 import org.junit.Before;
@@ -32,6 +33,10 @@ public class DownloadHackersListControllerTest {
     StreamInfo streamInfo;
     @Mock
     FileInputStream fileInputStream;
+
+    @Mock
+    AllHackers allHackers;
+
     DownloadHackersListController downloadHackersListController;
 
 
@@ -43,7 +48,7 @@ public class DownloadHackersListControllerTest {
         when(streamInfo.getFileName()).thenReturn("lala");
         when(streamInfo.getInputStream()).thenReturn(fileInputStream);
         when(fileInputStream.read(any())).thenReturn(-1);
-        downloadHackersListController = new DownloadHackersListController(fileManager);
+        downloadHackersListController = new DownloadHackersListController(fileManager, allHackers);
         when(response.getOutputStream()).thenReturn(output);
         downloadHackersListController.downloadHackers(request, response);
     }
@@ -71,5 +76,11 @@ public class DownloadHackersListControllerTest {
     @Test
     public void shouldCloseOutputStream() throws Exception {
         verify(output).close();
+    }
+
+    @Test
+    public void shouldCallSaveAllHackers() throws Exception {
+        verify(allHackers).generateCSVFile();
+
     }
 }
