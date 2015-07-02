@@ -1,6 +1,6 @@
 package br.com.hackerbrasileiro.webapp.domain;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
