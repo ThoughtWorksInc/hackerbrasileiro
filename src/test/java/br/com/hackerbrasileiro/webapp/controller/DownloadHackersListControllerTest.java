@@ -1,7 +1,7 @@
 package br.com.hackerbrasileiro.webapp.controller;
 
-import br.com.hackerbrasileiro.webapp.domain.validator.FileManager;
-import br.com.hackerbrasileiro.webapp.domain.validator.StreamInfo;
+import br.com.hackerbrasileiro.webapp.util.FileManager;
+import br.com.hackerbrasileiro.webapp.util.StreamInfo;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.apache.catalina.ssi.ByteArrayServletOutputStream;
 import org.junit.Before;

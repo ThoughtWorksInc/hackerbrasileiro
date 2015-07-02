@@ -9,7 +9,7 @@ import static org.hamcrest.core.Is.is;
 public class PythonScriptTest {
 
     @Test
-    public void shouldReturnTheCorrectCommand() throws Exception {
+    public void returnCorrectCommandTest() throws Exception {
         final String interpreter = "interpreter";
         final String script = "script";
         PythonScript pythonScript = new PythonScript(script, interpreter);

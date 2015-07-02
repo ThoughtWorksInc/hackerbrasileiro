@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo update-rc.d -f hackerbrasileiro defaults
+sudo update-rc.d -f hackerbrasileiro remove

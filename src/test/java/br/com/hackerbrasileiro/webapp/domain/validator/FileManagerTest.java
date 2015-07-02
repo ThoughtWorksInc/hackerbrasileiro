@@ -1,5 +1,7 @@
 package br.com.hackerbrasileiro.webapp.domain.validator;
 
+import br.com.hackerbrasileiro.webapp.util.FileManager;
+import br.com.hackerbrasileiro.webapp.util.StreamInfo;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

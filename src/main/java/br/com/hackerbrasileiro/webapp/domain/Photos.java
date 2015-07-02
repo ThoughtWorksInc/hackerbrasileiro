@@ -1,30 +1,37 @@
 package br.com.hackerbrasileiro.webapp.domain;
 
 
-import br.com.hackerbrasileiro.webapp.domain.validator.FileValidator;
+import br.com.hackerbrasileiro.webapp.util.FileHelper;
 import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
+import lombok.experimental.FieldDefaults;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.UUID;
 
+import static lombok.AccessLevel.PRIVATE;
+
 @Component
+@FieldDefaults(level = PRIVATE)
 public class Photos {
 
-    private static final String FILE_NAME_EXTENSION = ".jpg";
     private static final String READ_MODE = "r";
+
+    FileHelper fileHelper;
+
+    @Autowired
+    public Photos(FileHelper fileHelper) {
+        this.fileHelper = fileHelper;
+    }
 
     public String save(String base64Image) throws IOException {
         byte image[] = convertToByteArray(removeDataTypeInfo(base64Image));
         String fileName = generateUUID();
-        File file = new File(getFilePath(fileName));
-        FileOutputStream fileOutputStream = new FileOutputStream(file);
-        fileOutputStream.write(image);
-        fileOutputStream.close();
+        fileHelper.createFor(image, fileName);
         return fileName;
     }
 
@@ -57,11 +64,5 @@ public class Photos {
 
     private String removeDataTypeInfo(String text) {
         return text.substring(text.lastIndexOf(',')+1);
-    }
-
-    private String getFilePath(String fileName) {
-        String folderName = getPhotosPath().concat("/");
-        FileValidator.createFolderIfDoesNotExistsFor(folderName);
-        return String.format("%s%s%s", folderName, fileName, FILE_NAME_EXTENSION);
     }
 }

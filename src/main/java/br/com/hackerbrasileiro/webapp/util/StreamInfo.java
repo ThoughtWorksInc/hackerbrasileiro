@@ -1,4 +1,4 @@
-package br.com.hackerbrasileiro.webapp.domain.validator;
+package br.com.hackerbrasileiro.webapp.util;
 
 
 import java.io.File;

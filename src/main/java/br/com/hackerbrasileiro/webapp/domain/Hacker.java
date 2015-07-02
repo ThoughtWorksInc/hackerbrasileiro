@@ -14,6 +14,21 @@ public class Hacker {
     @Getter @Setter String email;
     @Getter @Setter String imageData;
 
+    public Hacker(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public static Hacker buildWith(String line) {
+        String[] hackerLine = line.split(",");
+        String firstName = hackerLine[0].trim();
+        String lastName = hackerLine[1].trim();
+        String email = hackerLine[2].trim();
+
+        return new Hacker(firstName, lastName, email);
+    }
+
     public String getFullName() {
         return String.format("%s %s", firstName, lastName);
     }

@@ -33,20 +33,21 @@ public class RandomHackerTest {
     }
 
     @Test
-    public void shouldCallTheCsvRepository() throws IOException {
+    public void getHackersDailyTest() throws IOException {
         randomHacker.getRandomHacker();
         verify(hackers, times(1)).getHackersDaily();
     }
 
     @Test
-    public void shouldGetTheCorrectEmail() throws IOException {
+    public void getCorrectEmailTest() throws IOException {
         Hacker hacker = getHacker();
         Hacker randomHacker = this.randomHacker.getRandomHacker();
+
         assertThat(randomHacker.getEmail(), is(hacker.getEmail()));
     }
 
     @Test
-    public void shouldNotThrowExceptionWithEmptyList() throws IOException {
+    public void notThrowExceptionWithEmptyListTest() throws IOException {
         when(hackers.getHackersDaily()).thenReturn(null);
         randomHacker.getRandomHacker();
     }

@@ -1,7 +1,7 @@
 package br.com.hackerbrasileiro.webapp.controller;
 
-import br.com.hackerbrasileiro.webapp.domain.validator.FileManager;
-import br.com.hackerbrasileiro.webapp.domain.validator.StreamInfo;
+import br.com.hackerbrasileiro.webapp.util.FileManager;
+import br.com.hackerbrasileiro.webapp.util.StreamInfo;
 import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

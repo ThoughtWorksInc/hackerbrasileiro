@@ -14,7 +14,7 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class AdminRepresentationControllerTest {
+public class AdminControllerTest {
 
     AdminController adminController;
 
@@ -32,12 +32,12 @@ public class AdminRepresentationControllerTest {
     }
 
     @Test
-    public void shouldShowAdminViewTest() throws Exception {
+    public void showAdminViewTest() throws Exception {
         ModelAndView adminView = adminController.createAdminView();
         assertThat(adminView.getViewName(), is("admin"));
     }
 
-    @Test @Ignore
+    @Test
     public void runScriptTest() throws Exception {
       //  byte[] result = adminController.runScript();
      //   assertThat(result.length > 0, is(true));
