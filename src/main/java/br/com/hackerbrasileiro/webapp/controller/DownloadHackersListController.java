@@ -1,5 +1,6 @@
 package br.com.hackerbrasileiro.webapp.controller;
 
+import br.com.hackerbrasileiro.webapp.util.FileHelper;
 import br.com.hackerbrasileiro.webapp.util.FileManager;
 import br.com.hackerbrasileiro.webapp.util.StreamInfo;
 import br.com.hackerbrasileiro.webapp.domain.AllHackers;
@@ -16,7 +17,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 @Controller
-@RequestMapping("/result.png")
+@RequestMapping("/hackerslist")
 public class DownloadHackersListController {
 
     public static final String HEADER_KEY = "Content-Disposition";
@@ -27,16 +28,19 @@ public class DownloadHackersListController {
 
     private FileManager fileManager;
     private AllHackers allHackers;
+    private FileHelper fileHelper;
 
     @Autowired
-    public DownloadHackersListController(FileManager fileManager, AllHackers allHackers) throws IOException {
+    public DownloadHackersListController(FileManager fileManager, AllHackers allHackers, FileHelper fileHelper) throws IOException {
         this.fileManager = fileManager;
         this.allHackers = allHackers;
+        this.fileHelper = fileHelper;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public void downloadHackers(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
+        fileHelper.createFolderIfDoesNotExistsFor("src/test/resources/emptyfolder");
         allHackers.generateCSVFile();
 
         StreamInfo streamInfo = fileManager.getStreamInfo(filePathResult);

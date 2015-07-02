@@ -1,5 +1,6 @@
 package br.com.hackerbrasileiro.webapp.controller;
 
+import br.com.hackerbrasileiro.webapp.util.FileHelper;
 import br.com.hackerbrasileiro.webapp.util.FileManager;
 import br.com.hackerbrasileiro.webapp.util.StreamInfo;
 import br.com.hackerbrasileiro.webapp.domain.AllHackers;
@@ -33,6 +34,8 @@ public class DownloadHackersListControllerTest {
     StreamInfo streamInfo;
     @Mock
     FileInputStream fileInputStream;
+    @Mock
+    FileHelper fileHelper;
 
     @Mock
     AllHackers allHackers;
@@ -48,7 +51,7 @@ public class DownloadHackersListControllerTest {
         when(streamInfo.getFileName()).thenReturn("lala");
         when(streamInfo.getInputStream()).thenReturn(fileInputStream);
         when(fileInputStream.read(any())).thenReturn(-1);
-        downloadHackersListController = new DownloadHackersListController(fileManager, allHackers);
+        downloadHackersListController = new DownloadHackersListController(fileManager, allHackers, fileHelper);
         when(response.getOutputStream()).thenReturn(output);
         downloadHackersListController.downloadHackers(request, response);
     }
