@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.OutputStream;
 
 @Controller
@@ -32,7 +31,7 @@ public class DownloadHackersListController {
 
         File fileSaved = fileManager.createFile(filePathResult);
 
-        FileInputStream inputStream = new FileInputStream(fileSaved);
+        //FileInputStream inputStream = new FileInputStream(fileSaved);
 
         String headerValue = String.format(HEADER_VALUE_FORMAT, fileSaved.getName());
 
@@ -45,9 +44,9 @@ public class DownloadHackersListController {
         byte[] buffer = new byte[BUFFER_SIZE];
         int bytesRead;
 
-        while ((bytesRead = inputStream.read(buffer)) != -1) {
-            output.write(buffer, 0, bytesRead);
-        }
+//        while ((bytesRead = inputStream.read(buffer)) != -1) {
+//            output.write(buffer, 0, bytesRead);
+//        }
 
         output.close();
 

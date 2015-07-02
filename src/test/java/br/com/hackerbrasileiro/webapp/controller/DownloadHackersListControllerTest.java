@@ -1,10 +1,8 @@
 package br.com.hackerbrasileiro.webapp.controller;
 
 import br.com.hackerbrasileiro.webapp.domain.validator.FileManager;
-import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.apache.catalina.ssi.ByteArrayServletOutputStream;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -14,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyString;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -34,13 +30,14 @@ public class DownloadHackersListControllerTest {
 
     DownloadHackersListController downloadHackersListController;
 
+    @Mock
     File fileTest;
 
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        fileTest = new File(System.getenv(EnvironmentVariable.FILE_PATH).concat("/teste.csv"));
-        fileTest.createNewFile();
+        when(fileTest.length()).thenReturn(5L);
+        when(fileTest.getName()).thenReturn("lala");
         when(fileManager.createFile(any())).thenReturn(fileTest);
         downloadHackersListController = new DownloadHackersListController(fileManager);
         when(response.getOutputStream()).thenReturn(output);
@@ -77,10 +74,5 @@ public class DownloadHackersListControllerTest {
     public void shouldCreateAndDeleteCSVFile() throws IOException {
         verify(fileManager).createFile(anyString());
         verify(fileManager).deleteFile(anyString());
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        fileTest.delete();
     }
 }
