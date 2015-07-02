@@ -2,14 +2,16 @@ package br.com.hackerbrasileiro.webapp.domain.validator;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
 import java.io.File;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class FileManagerTest {
+
+    @Mock
+    StreamInfo streamTest;
 
     FileManager fileManager;
 
@@ -32,5 +34,11 @@ public class FileManagerTest {
         File fileCreated = fileManager.createFile("teste.csv");
         assertNotNull(fileCreated);
         fileManager.deleteFile("teste.csv");
+    }
+
+    @Test
+    public void shouldGetStreamInfo() throws Exception {
+        StreamInfo streamInfo = fileManager.getStreamInfo("src/test/resources/result.png");
+        assertNotNull(streamInfo);
     }
 }
