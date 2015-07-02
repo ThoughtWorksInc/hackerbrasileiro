@@ -39,7 +39,7 @@ public class DownloadHackersListControllerTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        fileTest = new File(System.getenv(EnvironmentVariable.FILE_PATH).concat("teste.csv"));
+        fileTest = new File(System.getenv(EnvironmentVariable.FILE_PATH).concat("/teste.csv"));
         fileTest.createNewFile();
         when(fileManager.createFile(any())).thenReturn(fileTest);
         downloadHackersListController = new DownloadHackersListController(fileManager);
