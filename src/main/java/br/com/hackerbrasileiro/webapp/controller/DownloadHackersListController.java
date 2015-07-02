@@ -30,7 +30,6 @@ public class DownloadHackersListController {
     @RequestMapping(method = RequestMethod.GET)
     public void downloadHackers(HttpServletRequest request, HttpServletResponse response) throws Exception{
 
-        System.out.println("oi");
         StreamInfo streamInfo = fileManager.getStreamInfo(filePathResult);
 
         String headerValue = String.format(HEADER_VALUE_FORMAT, streamInfo.getFileName());

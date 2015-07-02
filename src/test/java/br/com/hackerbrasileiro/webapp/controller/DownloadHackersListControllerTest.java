@@ -55,7 +55,7 @@ public class DownloadHackersListControllerTest {
 
     @Test
     public void shouldReceiveAnCSVFileFromOutput() throws Exception {
-        verify(response).setContentType("text/css");
+        verify(response).setContentType("text/csv");
     }
 
     @Test
