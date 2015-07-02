@@ -6,40 +6,65 @@
     <div class="container-fluid">
         <header th:replace="fragments/header"></header>
 
-        <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <form action="#" th:action="@{/admin}" method="post">
-                    <div th:text="'Você possui ' + ${adminModel.numberOfPhotos} + ' fotos.' "/>
+        <!--<div class="row">-->
+            <!--<div class="col-sm-1"></div>-->
+            <!--<div class="col-sm-10">-->
+                <!--<form action="#" th:action="@{/admin}" method="post">-->
+                    <!-- <div th:text="'Você possui ' + ${adminModel.numberOfPhotos} + ' fotos.' "/>-->
 
-                    <button class="btn btn-primary">Gerar foto</button>
-                </form>
-            </div>
-            <div class="col-sm-1"></div>
-        </div>
-        <br/>
+                    <!--<button class="btn btn-primary">Gerar foto</button> -->
+                <!--</form>-->
+            <!--</div>-->
+            <!--<div class="col-sm-1"></div>-->
+        <!--</div>-->
+        <!--<br/>-->
+        <!--<div class="row">-->
+            <!--<div class="col-sm-1"></div>-->
+            <!--<div class="col-sm-10">-->
+                <!--<form action="#" th:action="@{/admin/email}" method="post">-->
+                    <!--<div th:if="${adminModel.email} != null">-->
+                        <!--A pessoa sorteada é: <span th:text="${adminModel.name}"/> (<span th:text="${adminModel.email}"/>).-->
+                    <!--</div>-->
+                    <!--<div th:text="${messageNoHackers}" />-->
+                    <!--<button class="btn btn-primary">Sortear email</button>-->
+                <!--</form>-->
+            <!--</div>-->
+            <!--<div class="col-sm-1"></div>-->
+        <!--</div>-->
+
         <div class="row">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-10">
-                <form action="#" th:action="@{/admin/email}" method="post">
-                    <div th:if="${adminModel.email} != null">
-                        A pessoa sorteada é: <span th:text="${adminModel.name}"/> (<span th:text="${adminModel.email}"/>).
-                    </div>
-                    <div th:text="${messageNoHackers}" />
-                    <button class="btn btn-primary">Sortear email</button>
-                </form>
-            </div>
-            <div class="col-sm-1"></div>
+          <div class="col-sm-10 col-sm-offset-1">
+              <div class="lucky-hacker" th:if="${adminModel.email} != null">
+                  A pessoa sorteada é: <span th:text="${adminModel.name}"/> (<span th:text="${adminModel.email}"/>).
+              </div>
+              <div class="alert alert-warning" th:if="${messageNoHackers} != null">
+                  <span th:text="${messageNoHackers}" />
+              </div>
+          </div>
         </div>
-        <br/>
         <div class="row">
-            <div class="col-sm-1"/>
-            <div class="col-sm-10">
-                <a href="/result.png">
-                    <button class="btn btn-primary">Baixar o arquivo CVS</button>
-                </a>
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="row admin-controls">
+                    <a href="/admin/photo" class="col-md-3 col-sm-12 col-xs-12">
+                        <div class="col-sm-12">
+                            <p th:text="'Você possui ' + ${adminModel.numberOfPhotos} + ' fotos.'" />
+                            <span class="admin-controls-span">Clique aqui para gerar a foto</span>
+                        </div>
+                    </a>
+                    <a href="/admin/email" class="col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
+                        <div class="col-sm-12">
+                            <p>Sortear hacker do dia</p>
+                            <span class="admin-controls-span">Clique aqui para descobrir o hacker</span>
+                        </div>
+                    </a>
+                    <a href="/hackerslist" class="col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
+                        <div class="col-sm-12">
+                          <p>Lista de Hackers</p>
+                          <span class="admin-controls-span">Baixar o arquivo CSV</span>
+                        </div>
+                    </a>
+                </div>
             </div>
-            <div class="col-sm-1"/>
         </div>
     </div>
 </body>

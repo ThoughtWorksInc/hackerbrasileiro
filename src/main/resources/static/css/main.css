@@ -1,6 +1,7 @@
-body{
-    font-family: 'Open Sans', serif;
+body {
+    font-family: 'Open Sans', sans-serif;
 }
+
 label {
 	display:block;
 	font-weight:normal;
@@ -265,4 +266,47 @@ input[type=checkbox] {
 
 #thankyou {
     font-weight: bold;
+}
+
+.admin-controls > a {
+  padding: 20px 30px;
+  background-color: #ccc;
+  font-size: 35px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  min-height: 170px;
+  margin-bottom: 5px;
+}
+
+.admin-controls > a:hover{
+  opacity: 0.8;
+}
+
+.admin-controls a:nth-child(1){
+  background: rgba(17,170,88,0.9);
+}
+
+.admin-controls a:nth-child(2){
+  background: rgba(106,37,105,0.9);
+}
+
+.admin-controls a:nth-child(3){
+  background: rgba(26,115,186,0.9);
+}
+
+.admin-controls-span {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  text-transform: none;
+}
+
+.lucky-hacker {
+  font-size: 35px;
+  text-transform: uppercase;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 30px;
 }

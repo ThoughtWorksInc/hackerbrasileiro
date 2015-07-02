@@ -44,7 +44,7 @@ public class AdminController {
         }
     }
 
-    @RequestMapping(value = "/admin", method = RequestMethod.POST, produces = "image/png")
+    @RequestMapping(value = "/admin/photo", method = RequestMethod.GET, produces = "image/png")
     public @ResponseBody byte[] runScript() throws IOException, InterruptedException {
         try {
             String script = PythonScript.getScriptPath().concat("/generate.py");
@@ -59,8 +59,7 @@ public class AdminController {
         }
     }
 
-
-    @RequestMapping(value = "/admin/email", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/email", method = RequestMethod.GET)
     public ModelAndView getRandomEmail(Model model) throws IOException {
         try {
             Hacker hacker = randomHacker.getRandomHacker();
