@@ -5,6 +5,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,5 +50,21 @@ public class Hackers implements HackersCsv {
 
         Stream<Hacker> hackerStream = lines.stream().map(line -> Hacker.buildWith(line));
         return hackerStream.collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    @Override
+    public File generateCsvFile() throws IOException {
+        String filePath = FileHelper.getFilePath();
+        String fileName = filePath.concat(FileHelper.ALL_HACKERS_FILE);
+
+        fileHelper.createFolderIfDoesNotExistsFor(filePath);
+        fileHelper.delete(fileName);
+
+        List<File> hackersFiles =  fileHelper.getFilesFrom(filePath);
+
+        fileHelper.createFileIfDoesNotExistsFor(fileName);
+
+        fileHelper.merge(hackersFiles);
+        return new File(fileName);
     }
 }

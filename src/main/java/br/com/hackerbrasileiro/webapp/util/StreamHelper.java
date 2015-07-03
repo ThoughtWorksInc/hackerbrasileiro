@@ -6,12 +6,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class StreamInfo {
+public class StreamHelper {
     InputStream inputStream;
     String fileName;
     long fileSize;
 
-    public StreamInfo(String fileName) throws FileNotFoundException {
+    public StreamHelper(String fileName) throws FileNotFoundException {
         this.fileName = fileName;
         File file = new File(fileName);
         inputStream = new FileInputStream(file);

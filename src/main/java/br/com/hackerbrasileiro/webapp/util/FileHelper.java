@@ -1,7 +1,6 @@
 package br.com.hackerbrasileiro.webapp.util;
 
 
-import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -15,6 +14,11 @@ public class FileHelper {
 
     private static final String FILE_NAME = "hackers_%s.csv";
     private static final String FILE_NAME_EXTENSION = ".jpg";
+
+    public static final String ALL_HACKERS_FILE = "allhackers.csv";
+    private static final String NEW_LINE = "\n";
+    public static final String ALL_HACKERS_HEADER = "NOME, SOBRENOME, EMAIL, ID FOTO";
+
 
     public void createFolderIfDoesNotExistsFor(String folderName) {
         File folderFile = new File(folderName);
@@ -47,9 +51,8 @@ public class FileHelper {
         File file = new File(getName());
         List<String> lines = new ArrayList<>();
 
-        if(file.exists()) {
+        if (file.exists()) {
             BufferedReader fileReader = new BufferedReader(new FileReader(getName()));
-
 
             try {
                 String line = fileReader.readLine();
@@ -82,7 +85,58 @@ public class FileHelper {
         return String.format("%s%s%s", getPhotoPath(), fileName, extension);
     }
 
+    public void delete(String filePath) {
+        File file = new File(filePath);
+        if (file.exists()) {
+            file.delete();
+        }
+    }
+
+    public List<File> getFilesFrom(String filePath) {
+        File folder = new File(filePath);
+
+        List<File> files = new ArrayList<>();
+
+        for (File file : folder.listFiles()) {
+            if (file.isFile() && isCsv(file)) {
+                files.add(file);
+            }
+        }
+
+        return files;
+    }
+
+    public void merge(List<File> files) throws IOException {
+        String header = ALL_HACKERS_HEADER.concat(NEW_LINE);
+        addLine(header);
+        for (File file : files) {
+            FileInputStream stream = new FileInputStream(file.getAbsolutePath());
+            InputStreamReader reader = new InputStreamReader(stream);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            String line = bufferedReader.readLine();
+
+            while (line != null) {
+                addLine(line);
+                line = bufferedReader.readLine();
+            }
+        }
+    }
+
+    public StreamHelper getStreamFor(String fileName) throws FileNotFoundException {
+        return new StreamHelper(fileName);
+    }
+
     private String getPhotoPath() {
         return System.getenv().get(EnvironmentVariable.PHOTO_PATH).concat("/");
+    }
+
+    private boolean isCsv(File file) {
+        return file.getName().endsWith(".csv");
+    }
+
+    private void addLine(String csvLine) throws IOException {
+        FileWriter fileWriter = new FileWriter(getFilePath().concat(ALL_HACKERS_FILE), true);
+        fileWriter.write(csvLine + NEW_LINE);
+        fileWriter.close();
     }
 }

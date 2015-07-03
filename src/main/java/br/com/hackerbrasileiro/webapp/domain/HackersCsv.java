@@ -2,6 +2,7 @@ package br.com.hackerbrasileiro.webapp.domain;
 
 import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface HackersCsv {
     void addLine(String line) throws IOException;
 
     List<Hacker> getHackersDaily() throws IOException;
+
+    File generateCsvFile() throws IOException;
 }

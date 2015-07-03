@@ -9,10 +9,10 @@ import static org.junit.Assert.assertNotNull;
 
 public class AllHackersTest {
 
-    @Test @Ignore
-    public void shouldSaveAllHackers() throws Exception {
-        AllHackers allHackers = new AllHackers();
-        File file = allHackers.generateCSVFile();
-        assertNotNull(file);
-    }
+//    @Test @Ignore
+//    public void shouldSaveAllHackers() throws Exception {
+//        AllHackers allHackers = new AllHackers();
+//        File file = allHackers.generateCsvFile();
+//        assertNotNull(file);
+//    }
 }
