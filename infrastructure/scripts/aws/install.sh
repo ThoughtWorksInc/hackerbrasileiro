@@ -7,10 +7,10 @@ echo "=====> Removing hackerbrasileiro jar"
 ssh -i /var/go/hackerbrasileiro-key.pem ubuntu@52.11.131.93 "rm -rf app/hackerbrasileiro.jar"
 
 echo "=====> Generate jar"
-./gradlew hackerbrasileiroJar
+./gradlew jar
 
 echo "=====> Copy jar to app folder"
-scp -i /var/go/hackerbrasileiro-key.pem hackerbrasileiro.jar ubuntu@52.11.131.93:app/
+scp -i /var/go/hackerbrasileiro-key.pem build/libs/hackerbrasileiro.jar ubuntu@52.11.131.93:app/
 
 echo "=====> Removing generate.py file"
 ssh -i /var/go/hackerbrasileiro-key.pem ubuntu@52.11.131.93 "rm -rf facemorpher/generate.py"

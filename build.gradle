@@ -28,14 +28,6 @@ dependencies {
     testCompile("org.mockito:mockito-all:1.8.4")
 }
 
-task hackerBrasileiroJar(type: Copy, dependsOn: ['clean', 'build']) {
-    from jar.archivePath
-    into project.rootDir
-    rename {
-        'hackerbrasileiro.jar'
-    }
-}
-
 task bringUpAppServer(type: Exec) {
     commandLine "vagrant", "up", "--no-provision"
 }
@@ -48,12 +40,6 @@ provisionAppServer.mustRunAfter(bringUpAppServer)
 
 task destroyAppServer(type: Exec) {
     commandLine "vagrant", "destroy", "--force"
-}
-
-hackerBrasileiroJar.mustRunAfter(clean)
-
-clean << {
-    project.file('hackerbrasileiro.jar').delete()
 }
 
 task wrapper(type: Wrapper) {
