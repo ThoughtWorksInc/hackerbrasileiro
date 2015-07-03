@@ -20,7 +20,7 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class DownloadHackersListControllerTest {
+public class DownloadHackersControllerTest {
 
     @Mock
     HttpServletRequest request;
@@ -40,7 +40,7 @@ public class DownloadHackersListControllerTest {
     @Mock
     AllHackers allHackers;
 
-    DownloadHackersListController downloadHackersListController;
+    DownloadHackersController downloadHackersController;
 
 
     @Before
@@ -51,9 +51,9 @@ public class DownloadHackersListControllerTest {
         when(streamInfo.getFileName()).thenReturn("lala");
         when(streamInfo.getInputStream()).thenReturn(fileInputStream);
         when(fileInputStream.read(any())).thenReturn(-1);
-        downloadHackersListController = new DownloadHackersListController(fileManager, allHackers, fileHelper);
+        downloadHackersController = new DownloadHackersController(fileManager, allHackers, fileHelper);
         when(response.getOutputStream()).thenReturn(output);
-        downloadHackersListController.downloadHackers(response);
+        downloadHackersController.downloadHackers(response);
     }
 
     @Test
