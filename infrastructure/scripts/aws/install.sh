@@ -3,7 +3,7 @@
 echo "=====> Stopping hackerbrasileiro service"
 ssh -i /var/go/hackerbrasileiro-key.pem ubuntu@52.11.131.93 "service hackerbrasileiro stop"
 
-echo "=====> Stopping hackerbrasileiro jar"
+echo "=====> Removing hackerbrasileiro jar"
 ssh -i /var/go/hackerbrasileiro-key.pem ubuntu@52.11.131.93 "rm -rf app/hackerbrasileiro.jar"
 
 echo "=====> Generate jar"
