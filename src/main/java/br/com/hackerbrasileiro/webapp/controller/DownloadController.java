@@ -45,7 +45,6 @@ public class DownloadController {
             String filePath = System.getenv(EnvironmentVariable.FILE_PATH).concat("/").concat(ALL_HACKERS_CSV);
             StreamHelper hackersCsv = getStreamFor(filePath);
 
-
             String contentType = "text/csv";
             setResponseMetadata(response, contentType, (int) hackersCsv.getFileSize(), ALL_HACKERS_CSV);
             writeResponse(hackersCsv.getInputStream(), response.getOutputStream());
@@ -66,8 +65,8 @@ public class DownloadController {
 
             String contentType = "image/png";
             setResponseMetadata(response, contentType, imageAsByteArray.length, PHOTO_NAME);
-            URL url = new URL(photoUrl);
-            writeResponse(url.openStream(), response.getOutputStream());
+            FileInputStream fileInputStream = new FileInputStream(photoUrl);
+            writeResponse(fileInputStream, response.getOutputStream());
         } catch (Exception ex) {
             log.error("Download Controller - error running facemorpher: ", ex);
         }
