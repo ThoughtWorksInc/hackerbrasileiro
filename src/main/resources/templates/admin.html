@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="row admin-controls">
-                    <a href="/admin/photo" class="col-md-3 col-sm-12 col-xs-12">
+                    <a href="/downloadPhoto" class="col-md-3 col-sm-12 col-xs-12">
                         <div class="col-sm-12">
                             <p th:text="'Você possui ' + ${adminModel.numberOfPhotos} + ' fotos.'" />
                             <span class="admin-controls-span">Clique aqui para gerar a foto</span>
@@ -29,7 +29,7 @@
                             <span class="admin-controls-span">Clique aqui para descobrir o hacker</span>
                         </div>
                     </a>
-                    <a href="/hackerslist" class="col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
+                    <a href="/downloadCsv" class="col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
                         <div class="col-sm-12">
                           <p>Lista de Hackers</p>
                           <span class="admin-controls-span">Baixar o arquivo CSV</span>

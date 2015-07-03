@@ -28,7 +28,7 @@ dependencies {
     testCompile("org.mockito:mockito-all:1.8.4")
 }
 
-task hackerBrasileiroJar(type: Copy, dependsOn: ['clean', 'build']) {
+task hackerBrasileiroJar(type: Copy) {
     from jar.archivePath
     into project.rootDir
     rename {

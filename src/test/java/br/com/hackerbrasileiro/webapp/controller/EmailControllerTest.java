@@ -3,7 +3,6 @@ package br.com.hackerbrasileiro.webapp.controller;
 import br.com.hackerbrasileiro.webapp.domain.Photos;
 import br.com.hackerbrasileiro.webapp.domain.RandomHacker;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,9 +13,9 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class AdminControllerTest {
+public class EmailControllerTest {
 
-    AdminController adminController;
+    EmailController emailController;
 
     @Mock
     Photos photos;
@@ -26,20 +25,14 @@ public class AdminControllerTest {
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        adminController = new AdminController(photos, randomHacker);
+        emailController = new EmailController(photos, randomHacker);
 
         when(photos.getImageAsByteArray(any(String.class))).thenReturn(new byte[1]);
     }
 
     @Test
-    public void showAdminViewTest() throws Exception {
-        ModelAndView adminView = adminController.createAdminView();
+    public void emailViewTest() throws Exception {
+        ModelAndView adminView = emailController.createAdminView();
         assertThat(adminView.getViewName(), is("admin"));
-    }
-
-    @Test
-    public void runScriptTest() throws Exception {
-      //  byte[] result = adminController.runScript();
-     //   assertThat(result.length > 0, is(true));
     }
 }

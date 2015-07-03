@@ -1,6 +1,7 @@
 package br.com.hackerbrasileiro.webapp.controller;
 
 import br.com.hackerbrasileiro.webapp.domain.Hackers;
+import br.com.hackerbrasileiro.webapp.domain.Photos;
 import br.com.hackerbrasileiro.webapp.util.FileHelper;
 import br.com.hackerbrasileiro.webapp.util.StreamHelper;
 import org.apache.catalina.ssi.ByteArrayServletOutputStream;
@@ -27,6 +28,7 @@ public class DownloadControllerTest {
     @Mock FileInputStream fileInputStream;
     @Mock FileHelper fileHelper;
     @Mock Hackers hackers;
+    @Mock Photos photos;
 
     DownloadController downloadController;
 
@@ -38,9 +40,9 @@ public class DownloadControllerTest {
         when(streamHelper.getFileName()).thenReturn("lala");
         when(streamHelper.getInputStream()).thenReturn(fileInputStream);
         when(fileInputStream.read(any())).thenReturn(-1);
-        downloadController = new DownloadController(hackers, fileHelper);
+        downloadController = new DownloadController(hackers, fileHelper, photos);
         when(response.getOutputStream()).thenReturn(output);
-        downloadController.downloadHackers(response);
+        downloadController.downloadCsv(response);
     }
 
     @Test

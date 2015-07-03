@@ -22,13 +22,13 @@ import static lombok.AccessLevel.PRIVATE;
 @Log4j
 @Controller
 @FieldDefaults(level = PRIVATE)
-public class AdminController {
+public class EmailController {
 
     Photos photos;
     RandomHacker randomHacker;
 
     @Autowired
-    public AdminController(Photos photos, RandomHacker randomHacker) {
+    public EmailController(Photos photos, RandomHacker randomHacker) {
         this.photos = photos;
         this.randomHacker = randomHacker;
     }
@@ -44,21 +44,6 @@ public class AdminController {
         }
     }
 
-    @RequestMapping(value = "/admin/photo", method = RequestMethod.GET, produces = "image/png")
-    public @ResponseBody byte[] runScript() throws IOException, InterruptedException {
-        try {
-            String script = PythonScript.getScriptPath().concat("/generate.py");
-            PythonScript pythonScript = new PythonScript(script, "python");
-            pythonScript.execute();
-
-            String facemorpherResult = PythonScript.getScriptPath().concat("/result.png");
-            return photos.getImageAsByteArray(facemorpherResult);
-        } catch (Exception ex) {
-            log.error("Admin Controller - error running facemorpher: ", ex);
-            return null;
-        }
-    }
-
     @RequestMapping(value = "/admin/email", method = RequestMethod.GET)
     public ModelAndView getRandomEmail(Model model) throws IOException {
         try {
@@ -66,7 +51,7 @@ public class AdminController {
             Integer numberOfPhotos = photos.countNumberOfFilesInFolder(Photos.getPhotosPath());
 
             if(hacker.getEmail() == null || hacker.getEmail().isEmpty()) {
-                model.addAttribute("messageNoHackers", "Desculpe, não há hackers para sortear no momento");
+                model.addAttribute("messageNoHackers", "Desculpe, não há hackers para sortear no momento.");
             }
 
             return new ModelAndView("admin", "adminModel", new AdminRepresentation(numberOfPhotos, hacker.getFullName(), hacker.getEmail()));
