@@ -20,9 +20,6 @@ import java.io.OutputStream;
 @RequestMapping("/hackerslist")
 public class DownloadHackersListController {
 
-    public static final String HEADER_KEY = "Content-Disposition";
-    public static final String HEADER_VALUE_FORMAT = "attachment; filename=\"%s\"";
-    private static final int BUFFER_SIZE = 4096;
     public static final String ALL_HACKERS_CSV = "allhackers.csv";
     private String filePathResult = System.getenv(EnvironmentVariable.FILE_PATH).concat("/").concat(ALL_HACKERS_CSV);
 
@@ -38,23 +35,21 @@ public class DownloadHackersListController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public void downloadHackers(HttpServletRequest request, HttpServletResponse response) throws Exception{
-
-        fileHelper.createFolderIfDoesNotExistsFor("src/test/resources/emptyfolder");
+    public void downloadHackers(HttpServletResponse response) throws Exception{
         allHackers.generateCSVFile();
 
-        StreamInfo streamInfo = fileManager.getStreamInfo(filePathResult);
+        StreamInfo hackersCSV = fileManager.getStreamInfo(filePathResult);
+
+        setResponseMetadata(response, (int) hackersCSV.getFileSize());
+        writeResponse(response.getOutputStream(), hackersCSV);
+
+    }
+
+    private void writeResponse(OutputStream output, StreamInfo streamInfo) throws IOException {
+        int bufferSize = 4096;
         InputStream inputStream = streamInfo.getInputStream();
 
-        String headerValue = String.format(HEADER_VALUE_FORMAT, ALL_HACKERS_CSV);
-        response.setHeader(HEADER_KEY, headerValue);
-
-        response.setContentLength((int) streamInfo.getFileSize());
-        response.setContentType("text/csv");
-
-        OutputStream output = response.getOutputStream();
-
-        byte[] buffer = new byte[BUFFER_SIZE];
+        byte[] buffer = new byte[bufferSize];
         int bytesRead;
 
         while ((bytesRead = inputStream.read(buffer)) != -1) {
@@ -63,6 +58,17 @@ public class DownloadHackersListController {
 
         inputStream.close();
         output.close();
+    }
+
+    private void setResponseMetadata(HttpServletResponse response, int fileSize) {
+        String headerValueFormat = "attachment; filename=\"%s\"";
+        String headerKey = "Content-Disposition";
+        String contentType = "text/csv";
+        String headerValue = String.format(headerValueFormat, ALL_HACKERS_CSV);
+
+        response.setHeader(headerKey, headerValue);
+        response.setContentLength(fileSize);
+        response.setContentType(contentType);
     }
 
 }

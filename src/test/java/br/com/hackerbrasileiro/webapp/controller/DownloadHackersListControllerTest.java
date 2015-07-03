@@ -1,12 +1,12 @@
 package br.com.hackerbrasileiro.webapp.controller;
 
+import br.com.hackerbrasileiro.webapp.domain.AllHackers;
 import br.com.hackerbrasileiro.webapp.util.FileHelper;
 import br.com.hackerbrasileiro.webapp.util.FileManager;
 import br.com.hackerbrasileiro.webapp.util.StreamInfo;
-import br.com.hackerbrasileiro.webapp.domain.AllHackers;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.apache.catalina.ssi.ByteArrayServletOutputStream;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mock;
 
@@ -14,10 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 
-import static org.mockito.Matchers.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class DownloadHackersListControllerTest {
@@ -53,10 +53,11 @@ public class DownloadHackersListControllerTest {
         when(fileInputStream.read(any())).thenReturn(-1);
         downloadHackersListController = new DownloadHackersListController(fileManager, allHackers, fileHelper);
         when(response.getOutputStream()).thenReturn(output);
-        downloadHackersListController.downloadHackers(request, response);
+        downloadHackersListController.downloadHackers(response);
     }
 
-    @Test @Ignore
+    @Test
+    @Ignore
     public void shouldWriteSomethingInTheResponseOutput() throws Exception {
         verify(output, times(0)).write((byte[]) any());
     }

@@ -19,16 +19,24 @@ public class AllHackers {
     private FileManager fileManager = new FileManager();
 
     public File generateCSVFile() throws IOException {
+        // I want to add them here!
+        //String desiredFolder = System.getenv(EnvironmentVariable.FILE_PATH);
+        //fileHelper.createFolderIfDoesNotExistsFor(desiredFolder);
+
         fileManager.deleteFile(HACKERS_LIST_FOLDER.concat(ALL_HACKERS_FILE));
+
         List<File> hackersInfoPerDay =  fileManager.getAllFilesFromFolder(HACKERS_LIST_FOLDER);
+
         fileManager.createFile(HACKERS_LIST_FOLDER.concat(ALL_HACKERS_FILE));
+
         mergeAllCSVFiles(hackersInfoPerDay);
         return new File(HACKERS_LIST_FOLDER.concat(ALL_HACKERS_FILE));
 
     }
 
     private void mergeAllCSVFiles(List<File> files) throws IOException {
-        addHeader();
+        String csvHeader = ALL_HACKERS_HEADER.concat(NEW_LINE);
+        addLine(csvHeader);
         for (File file : files) {
             FileInputStream stream = new FileInputStream(file.getAbsolutePath());
             InputStreamReader reader = new InputStreamReader(stream);
@@ -48,13 +56,4 @@ public class AllHackers {
         fileWriter.write(csvLine + NEW_LINE);
         fileWriter.close();
     }
-    private void addHeader() throws IOException {
-        FileWriter fileWriter = new FileWriter(HACKERS_LIST_FOLDER + ALL_HACKERS_FILE, true);
-        fileWriter.write(ALL_HACKERS_HEADER+NEW_LINE);
-        fileWriter.close();
-    }
-
-
-
-
 }
