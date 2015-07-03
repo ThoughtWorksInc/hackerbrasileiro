@@ -22,7 +22,8 @@ photos/
 logs/
 .gradle/
 facemorpher/result.png
-*.csv
+allhackers.csv
+hackers_*.csv
 *.log
 
 
