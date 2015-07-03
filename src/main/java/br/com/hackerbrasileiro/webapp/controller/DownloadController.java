@@ -6,29 +6,29 @@ import br.com.hackerbrasileiro.webapp.domain.PythonScript;
 import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
 import br.com.hackerbrasileiro.webapp.util.FileHelper;
 import br.com.hackerbrasileiro.webapp.util.StreamHelper;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.thymeleaf.processor.IElementNameProcessorMatcher;
 
 import javax.servlet.http.HttpServletResponse;
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.URL;
+
+import static lombok.AccessLevel.PRIVATE;
 
 @Log4j
+@FieldDefaults(level = PRIVATE)
 @Controller
 public class DownloadController {
 
-    public static final String ALL_HACKERS_CSV = "allhackers.csv";
-    public static final String PHOTO_NAME = "hackerbrasileiro.png";
+    static final String ALL_HACKERS_CSV = "allhackers.csv";
+    static final String PHOTO_NAME = "hackerbrasileiro.png";
 
-    private Hackers hackers;
-    private FileHelper fileHelper;
-    private Photos photos;
+    Hackers hackers;
+    FileHelper fileHelper;
+    Photos photos;
 
     @Autowired
     public DownloadController(Hackers hackers, FileHelper fileHelper, Photos photos) throws IOException {
@@ -53,7 +53,7 @@ public class DownloadController {
         }
     }
 
-    @RequestMapping(value = "/downloadPhoto", method = RequestMethod.GET, produces = "image/png")
+    @RequestMapping(value = "/downloadPhoto", method = RequestMethod.GET)
     public void downloadPhoto(HttpServletResponse response) throws IOException, InterruptedException {
         try {
             String script = PythonScript.getScriptPath().concat("/generate.py");
