@@ -2,7 +2,7 @@ package br.com.hackerbrasileiro.webapp.controller;
 
 import br.com.hackerbrasileiro.webapp.domain.Hackers;
 import br.com.hackerbrasileiro.webapp.domain.Photos;
-import br.com.hackerbrasileiro.webapp.domain.PythonScript;
+import br.com.hackerbrasileiro.webapp.util.ScriptExecutor;
 import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
 import br.com.hackerbrasileiro.webapp.util.FileHelper;
 import br.com.hackerbrasileiro.webapp.util.StreamHelper;
@@ -56,11 +56,10 @@ public class DownloadController {
     @RequestMapping(value = "/downloadPhoto", method = RequestMethod.GET)
     public void downloadPhoto(HttpServletResponse response) throws IOException, InterruptedException {
         try {
-            String script = PythonScript.getScriptPath().concat("/generate.py");
-            PythonScript pythonScript = new PythonScript(script, "python");
-            pythonScript.execute();
+            executeUpdateImageRotation();
+            executeFacemorpher();
 
-            String photoUrl = PythonScript.getScriptPath().concat("/result.png");
+            String photoUrl = ScriptExecutor.getScriptPath().concat("/result.png");
             byte[] imageAsByteArray = photos.getImageAsByteArray(photoUrl);
 
             String contentType = "image/png";
@@ -70,6 +69,18 @@ public class DownloadController {
         } catch (Exception ex) {
             log.error("Download Controller - error running facemorpher: ", ex);
         }
+    }
+
+    private void executeUpdateImageRotation() throws IOException, InterruptedException {
+        String script = ScriptExecutor.getScriptPath().concat("/update_image_rotation.sh");
+        ScriptExecutor scriptExecutor = new ScriptExecutor(script, "bash");
+        scriptExecutor.execute();
+    }
+
+    private void executeFacemorpher() throws IOException, InterruptedException {
+        String script = ScriptExecutor.getScriptPath().concat("/generate.py");
+        ScriptExecutor scriptExecutor = new ScriptExecutor(script, "python");
+        scriptExecutor.execute();
     }
 
     private void writeResponse(InputStream input, OutputStream output) throws IOException {

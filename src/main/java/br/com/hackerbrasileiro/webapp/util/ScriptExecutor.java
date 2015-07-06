@@ -1,6 +1,5 @@
-package br.com.hackerbrasileiro.webapp.domain;
+package br.com.hackerbrasileiro.webapp.util;
 
-import br.com.hackerbrasileiro.webapp.util.EnvironmentVariable;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
@@ -10,7 +9,7 @@ import static lombok.AccessLevel.PRIVATE;
 
 @AllArgsConstructor
 @FieldDefaults(level = PRIVATE, makeFinal = true)
-public class PythonScript {
+public class ScriptExecutor {
     String script;
     String interpreter;
 

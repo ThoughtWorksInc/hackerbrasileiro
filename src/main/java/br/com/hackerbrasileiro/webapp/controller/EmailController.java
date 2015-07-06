@@ -3,7 +3,6 @@ package br.com.hackerbrasileiro.webapp.controller;
 import br.com.hackerbrasileiro.webapp.controller.representation.AdminRepresentation;
 import br.com.hackerbrasileiro.webapp.domain.Hacker;
 import br.com.hackerbrasileiro.webapp.domain.Photos;
-import br.com.hackerbrasileiro.webapp.domain.PythonScript;
 import br.com.hackerbrasileiro.webapp.domain.RandomHacker;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;

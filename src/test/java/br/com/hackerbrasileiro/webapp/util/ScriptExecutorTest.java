@@ -1,4 +1,4 @@
-package br.com.hackerbrasileiro.webapp.domain;
+package br.com.hackerbrasileiro.webapp.util;
 
 
 import org.junit.Test;
@@ -6,14 +6,14 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class PythonScriptTest {
+public class ScriptExecutorTest {
 
     @Test
     public void returnCorrectCommandTest() throws Exception {
         final String interpreter = "interpreter";
         final String script = "script";
-        PythonScript pythonScript = new PythonScript(script, interpreter);
-        String[] command = pythonScript.getScriptCommand();
+        ScriptExecutor scriptExecutor = new ScriptExecutor(script, interpreter);
+        String[] command = scriptExecutor.getScriptCommand();
 
         String[] expectedResult = new String[]{interpreter, script};
         assertThat(command, is(expectedResult));
