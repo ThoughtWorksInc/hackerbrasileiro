@@ -52,7 +52,7 @@ public class Hackers implements HackersCsv {
 
     @Override
     public String formatLine(Hacker hacker, String UUID) {
-        return String.format("%s %s %s", hacker.toString(), UUID, NEW_LINE);
+        return String.format("%s %s", hacker.toString(), NEW_LINE);
     }
 
     public void addLine(String line) throws IOException {

@@ -52,6 +52,6 @@ public class Hacker {
 
     @Override
     public String toString() {
-        return String.format("%s, %s, %s,", this.firstName, this.lastName,  this.email);
+        return String.format("%s, %s, %s", this.firstName, this.lastName,  this.email);
     }
 }

@@ -34,7 +34,7 @@ public class FileHelper {
 
     public static final String ALL_HACKERS_FILE = "allhackers.csv";
     private static final String NEW_LINE = "\n";
-    public static final String ALL_HACKERS_HEADER = "NOME, SOBRENOME, EMAIL, ID FOTO";
+    public static final String ALL_HACKERS_HEADER = "NOME, SOBRENOME, EMAIL";
 
 
     public void createFolderIfDoesNotExistsFor(String folderName) {
