@@ -310,3 +310,7 @@ input[type=checkbox] {
   text-align: center;
   margin-bottom: 30px;
 }
+
+#confirm-button {
+    text-transform: uppercase;
+}

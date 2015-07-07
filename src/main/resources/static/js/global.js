@@ -15,6 +15,11 @@
 		}
 		return false;
 	});
+
+    $("#confirm-button").click(function(){
+        var $button = $(this);
+        $button.button('loading');
+    });
 })($);
 
 function showFormPage() {
@@ -48,14 +53,14 @@ function changeToScreen(component){
 }
 
 function populateFinalForm(img){
-        var firstName = $("#inputFirstName").val();
-        var lastName = $("#inputLastName").val();
-        var email = $("#inputEmail").val();
+    var firstName = $("#inputFirstName").val();
+    var lastName = $("#inputLastName").val();
+    var email = $("#inputEmail").val();
 
-        $("#firstName").val(firstName);
-        $("#lastName").val(lastName);
-        $("#email").val(email);
-        $("#imageData").val(img.src);
+    $("#firstName").val(firstName);
+    $("#lastName").val(lastName);
+    $("#email").val(email);
+    $("#imageData").val(img.src);
 }
 
 
