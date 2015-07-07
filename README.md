@@ -7,7 +7,6 @@
 Open your bashrc file (or zshrc or other shell that you are using) with a editor text and insert the code below:
 
 ```
-export HACKERBRASILEIRO_PORT=<port_number>
 export HACKERBRASILEIRO_PHOTO_PATH="<photo_path>"
 export HACKERBRASILEIRO_FILE_PATH="<file_path>"
 export HACKERBRASILEIRO_FACEMORPHER_PATH="<facemorpher_path>"
